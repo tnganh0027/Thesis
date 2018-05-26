@@ -1,0 +1,87 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{tabu}
+\usepackage{indentfirst}
+\usepackage{array}
+\setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+
+
+%\renewcommand{\familydefault}{\sfdefault}
+ 
+%\renewcommand\thesection{\Roman{section}}
+%\renewcommand\thesubsection{\arabic{subsection}}
+
+
+%
+%\title{LaTex Thesis Template}	%% title
+%\author{Trương Ngọc Anh}			%% author's name
+
+%
+\newcommand{\argmax}{\arg\!\max}
+
+\begin{document}
+
+\begin{center}
+	\textbf{ĐẠI HỌC QUỐC GIA TP.HỒ CHÍ MINH}\\
+	TRƯỜNG ĐẠI HỌC BÁCH KHOA\\
+	KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH\\
+	---------------o0o--------------- \\
+	\vspace{5mm}
+	\includegraphics[scale=0.2]{charts/logo.png}
+\end{center}
+\vspace{5mm}
+
+\begin{center}
+	\textbf{Đề cương luận văn tốt nghiệp}
+\end{center}
+
+\textbf{\Large Phát hiện kẹt xe từ camera hành trình}
+
+\vspace{5mm}
+
+\textbf{GVHD: } TS.Dương Ngọc Hiếu
+
+\vspace{5mm}
+
+Nhóm sinh viên thực hiện:\\
+ Trương Ngọc Anh  1410141 \\
+ Lê Nguyễn Minh Trí  1414207 \\
+ 
+
+\thispagestyle{empty}
+
+%
+%\maketitle
+\tableofcontents
+
+%
+
+%
+\listoffigures
+\listoftables
+%\mainmatter
+%
+\input{chapters/introduction}\newpage\cleardoublepage
+\input{chapters/background}\newpage\cleardoublepage
+\input{chapters/background2}\newpage\cleardoublepage
+\input{chapters/method}\newpage\cleardoublepage
+\input{chapters/evaluation}\newpage\cleardoublepage
+\input{chapters/conclusion}\newpage\cleardoublepage
+%\addbibresource{references.bib}
+\nocite{*}
+\bibliography{references}\newpage\cleardoublepage
+\bibliographystyle{plain}
+
+\end{document}
