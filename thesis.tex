@@ -10,8 +10,20 @@
 \usepackage{hyperref}
 \usepackage{tabu}
 \usepackage{indentfirst}
+\usepackage{svg}
 \usepackage{array}
 \setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{subcaption}
+\usepackage{verbatim} 
+\usepackage{listings}
+\usepackage{lmodern}  % for bold teletype font
+\usepackage{xcolor}   % for \textcolor
+\setcounter{secnumdepth}{3}
+\definecolor{light-gray}{gray}{0.95}
 \renewcommand{\baselinestretch}{1.5}
 
 
@@ -32,6 +44,15 @@
 \newcommand{\argmax}{\arg\!\max}
 
 \begin{document}
+\begin{titlepage}
+\begin{tikzpicture}[overlay,remember picture]
+    \draw [line width=0.5mm,decorate,decoration={
+        %,segment length=<length>,amplitude=<length>
+        }]
+        ($ (current page.north west) + (3cm,-3cm) $)
+        rectangle
+        ($ (current page.south east) + (-3cm,3cm) $);
+\end{tikzpicture}
 
 \begin{center}
 	\textbf{ĐẠI HỌC QUỐC GIA TP.HỒ CHÍ MINH}\\
@@ -44,7 +65,7 @@
 \vspace{5mm}
 
 \begin{center}
-	\textbf{Đề cương luận văn tốt nghiệp}
+	\textbf{Luận văn tốt nghiệp}
 \end{center}
 
 \textbf{\Large Phát hiện kẹt xe từ camera hành trình}
@@ -55,13 +76,14 @@
 
 \vspace{5mm}
 
-Nhóm sinh viên thực hiện:\\
- Trương Ngọc Anh  1410141 \\
- Lê Nguyễn Minh Trí  1414207 \\
- 
+\textbf{Nhóm sinh viên thực hiện:}\par
+\begin{tabular}{ c c }
+ Trương Ngọc Anh & 1410141 \\ 
+ Lê Nguyễn Minh Trí & 1414207     
+\end{tabular}
 
 \thispagestyle{empty}
-
+\end{titlepage}
 %
 %\maketitle
 \tableofcontents
