@@ -5,7 +5,7 @@
 	Ngày nay, với sự phát triển của Deep learning do nguồn dữ liệu to lớn và các máy tính ngày càng cải tiến về khả năng tính toán khiến cho kết quả chính xác của các bài toán phân loại ngày càng cao. Như mô hình mạng googLeNet có rất nhiều tầng khiến cho việc huấn luyện tốn kém thời gian. Thay vì như vậy chúng ta áp dụng phương pháp transfer learning.\par
 	Transfer learning là công đoạn lấy model đã được huấn luyện tư một tập dữ liệu khác \cite{transfer} và tích hợp lại với tập dữ liệu có đang có. Việc này là khả thi do mô hình đã huấn luyện trước đó sử dụng tập ảnh khổng lồ giúp cho mồ hình học được loạt những đặc tính thường thấy trong cùng một ảnh. Có thể thấy tất cả các ảnh đều có những đặc tính cơ bản giống nhau, khi muốn huấn luyện lại cho tập ảnh của chính mình chúng ta chỉ cần thay tầng cuối cùng của mạng bằng tập dữ liệu của mình. Mô hình sẽ tự điều chỉnh lại các trọng số cũng như độ lệch từ các giá trị từ mô hình đã huấn luyện với tập dữ liệu mới mà không cần làm lại từ đầu.
 
-\section{Hiện thực}
+\section{Các bước chuẩn bị}
 \subsection{Tổng quan về tập dữ liệu}
 	Để xây dựng mô hình phân loại hình ảnh, chúng ta cần phải có một tập huấn luyện đủ tốt. Ở đây, các hình ảnh được trích xuất từ camera hành trình từ các tuyến xe buýt. \par
 	Cấu trúc tổ chức tập dữ liệu gồm 2 thư mục chính:
@@ -81,6 +81,48 @@
 	
 
 \section{Các bước hiện thực}
+
+	\subsection{Cài đặt Apache Hadoop trên cụm 3 máy tính}
+	Như nội dụng mục trên, các máy tính Hadoop đều sử dụng hệ điều hanh Ubuntu 18.04.\par
+	
+		\subsubsection{Cấu hình chuẩn bị}
+		\begin{enumerate}
+			\item Cài đặt hệ điều hành 18.04 cho các máy tính sẽ cài Apache hadoop và đảm bảo rằng các máy được cấu hinh và cài các phần mềm hỗ trợ như sau.
+			\begin{itemize}
+				\item Cài đặt \href{https://help.ubuntu.com/lts/serverguide/openssh-server.html}{openssh-server} để thực hiện bước kết nối ssh giữa máy master và datanodes.
+				\item Cài đặt \href{https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html}{Java 10 và cấu hình biến môi trường}.
+				\item Tải gói cài đặt \href{http://hadoop.apache.org/releases.html}{Apache Hadoop 3.1.0}.
+				\item Tạo user mới trên các máy ubuntu để sử dụng hadoop
+			\end{itemize}
+			\item Lấy IP của tất cả máy đang có và gán vào file \textbf{etc/hosts} của máy được chọn làm master như sau
+			
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[scale=0.18]{charts/neuron.png}
+				\caption{Cấu hình file hosts trên máy master}
+				\label{fig:hosts}
+			\end{figure}
+			\textbf{Viết tiếp IP nào là master, IP nào là slave và chèn hình lại}
+			
+		\end{enumerate}
+		
+		\subsubsection{Truy cập SSH}
+		SSH là giao thức mạng được sử dụng để đăng nhâp vào một máy tính từ xa. Hadoop sẽ sử dụng giao thức nay để kết nối các máy master và datanodes. Nhờ đó mà master có thể truy cập cũng như điều khiển các slaves.\par 
+		Trong hduser của máy được chọn làm master ta lần thực hiện các lệnh sau để khai triển SSH.
+		\begin{enumerate}
+			\item Sinh ra cặp public key và private key
+			\textbf{include graphic hình câu lệnh sshkeygen vào đây}
+			\item Copy public key tới các máy slave đã được chọn
+			\textbf{incude graphic các câu coppy id vào đây và giải thích}
+			\item Kiểm tra thử kết nối đã thành công bằng cách:
+			\textbf{include graphic hình kết nối thành công vô đây}
+		\end{enumerate}
+		
+		\subsubsection{Cài đặt Hadoop}
+			
+			
+		
+				
 
 	\subsection{Xử lý dữ liệu}
 	
