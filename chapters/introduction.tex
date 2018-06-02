@@ -1,25 +1,40 @@
 \chapter{Giới thiệu}
 
 \section{Tổng quan}
-	Với sự phát triển nhanh chóng của nước ta, với cơ sở hạ tầng giao thông còn chưa hoàn thiện nên nạn ùn tắt giao thông là điều không thể tránh khỏi. Các công tác nhận biết và xử lý các chốt ùn tắt tương đối chậm và chưa hiệu quả. Nạn ùn tắt giao thông có thể là nguyên nhân chính trong việc kiềm hãm sự phát triển.\par
-	Trong những năm gần đây, sự bùng nổ kỹ thuật số và thông tin cho thấy những công trình nghiên cứu mang tính ứng dụng cao trong các lĩnh vực trí tuệ nhân tạo. Điển hình là chủ đề học máy, học sâu, sự phát triển mạnh của hai chủ đề này khiến cho vấn đề phân loại hình ảnh đạt tới một cột mốc mới. Đề tài "Phát hiện kẹt xe qua camera hành trình" kỳ vọng có thể áp ựng mô hình học sâu để nhận biết tình trạng giao thông.
+	Từ những năm gần đây, tình trạng ùn tắc giao thông ở Thành Phố Hồ Chí Minh đã không dừng lại ở diễn biến phức tạp mà lại còn gia tăng hơn trước. Cụ thể, trên các tuyến đường giờ đây, không chỉ riêng giờ cao điểm, mà các khung giờ khác, tình trạng kẹt xe ngày càng trở phổ biến đối với mỗi người khi tham gia giao thông. Nguyên nhân dẫn đến sự việc trên, một phần ảnh hưởng bởi điều kiện thời tiết, một phần do các công trình cải tạo hạ tầng, khi thi công lấn chiếm mặt đường. Nhưng phần lớn là do mật độ xe cộ ngày một đông dần, dẫn đến việc ùn tắt, ùn ứ, di chuyển chậm,... Từ những nguyên nhân trên, thực trạng giao thông ở Tp. Hồ Chí Minh trở thành một bài toán mà các công ty, các nhà công nghệ hàng đầu Việt Nam quan tâm đến.\par
+	Hiện nay, để giải quyết những bài toán như trên, đã có một số ý kiến về việc xây dựng một hệ thống "Smart City", "Hệ thống giao thông thông minh",... Những hệ thống trên được đưa ra dựa vào sự bùng nổ kỹ thuật số và thông tin. Dữ liệu trở nên một cách đa dạng, không còn là những file sql, text thông thường nữa, mà đã được nâng cấp, cải tiến thành hình ảnh, video,... giúp cho chúng ta có thể nhìn được dữ liệu một cách trực quan, phong phú hơn, nhưng để đáp ứng được nhu cầu thiết yếu ấy, chúng ta cần một lượng tập dữ liệu cực lớn để lưu trữ, và giờ đây nó đã trở thành một thuật ngữ mà khi nhắc đến ai cũng có thể biết đến đó là "Big Data".\par
+"Big Data" có những lợi ích như: cắt giảm chi phí, tăng thời gian phát triển, tối ưu hoá sản phẩm và giảm thời gian. Giúp chúng ta có thể sử dụng, phân phối một lượng dữ liệu lớn một cách linh hoạt, hiệu quả, đạt được hiệu suất cao,... Ngoài ra, "Big Data" còn được ứng dụng vào các dự án công nghệ, thông qua việc thu thập dữ liệu trong suốt nhiều năm để dự đoán về một quá trình nào đó có thể xảy ra hay không,...\par
+Một số công nghệ sử dụng "Big Data": Hadoop, Apache Spark, Data lakes, NQL Databases, In-memory databases,...\par
+Bên cạnh với sự bùng nổ dữ liệu đến từ "Big Data", thì với những năm gần đây, trí tuệ nhân tạo (AI) nổi lên như một bằng chứng của cuộc cách mạng công nghiệp lần thứ tư (1-động cơ hơi nước, 2-năng lượng điện, 3-công nghệ thông tin). Trí tuệ nhân tạo đã và đang trở thành phần cốt lỗi trong các hệ thống công nghệ cao. Nó đã len lỏi vào hầu hết các lĩnh vực trong đời sống mà có thể chúng ta không nhận ra. Xe tự hành của Google và Tesla, hệ thống tự tag khuôn mặt trong ảnh của Facebook, trợ lý ảo Siri của Apple,...\par
+Học máy (Machine Learning) là một tập con của Trí Tuệ Nhân Tạo. Nó là một lĩnh vực nhỏ trong khoa học máy tính, có khả năng tự học hỏi dựa trên dữ liệu được đưa vào mà không cần phải được lập trình cụ thể (Machine Learning is the subfiled of computer science, that "gives computers the ability to learn without being explicitly programmed"–Wikipedia).\par
+Những năm gần đây, sự phát triển của các hệ thống tính toán cùng với lượng dữ liệu khổng lồ được thu thập bởi các hãng công nghệ lớn đã giúp machine learning tiến thêm một bước dài. Một lĩnh vực mới được ra đời được gọi là Học sâu (Deep Learning). Deep Learning đã giúp máy tính thực thi những việc tưởng chừng như không thể vào những năm trước đây: phân loại hàng ngàn vật thể khác nhau trong bức ảnh, tự tạo chú thích cho ảnh, bắt chước giọng nói và chữ viết của con người, giao tiếp với con người, chuyển đổi ngôn ngữ,...\par
+Deep Learning được nghiên cứu và được chú tâm nhiều ở các doanh nghiệp vì Deep Learning đã khai thác được Big Data cùng với độ chính xác cao trên tập dữ liệu ảnh và tín hiệu số cao, tạo ra nhiều sự quan tâm để mọi người nghiên cứu. Việc áp dụng sự kết hợp Deep Learning và Big Data trở nên thành việc khả thi và cần thiết đối với các dữ liệu cần được lưu trữ có dung lượng lớn, nhưng điều đó trở nên khó khăn đối với một số đối tượng nghiên cứu, tại vì chúng ta cần xây dựng một hệ thống Big Data, có thể điều đó tốn khá nhiều chi phí để thực thi, tuy nhiên, nó lại khiến cho kết quả của độ chính xác sẽ đạt được có thể sẽ cao hơn so với dự kiến của chúng ta. Các nhà công nghệ lớn cũng đã áp dụng sự kết hợp đó như Facebook, Google,...\par
+Từ những ưu điểm, nhược điểm, đã nêu trên cùng với mong muốn áp dụng công nghệ Deep Learning vào để giải quyết những khó khăn, hạn chế trong thực tế đời sống. Nhóm sinh viên tụi em đã có một ý tưởng về việc xác định việc kẹt xa thông qua tấm hình được cắt ra từ camera hành trình của xe bus. Trên một chiếc xe bus thông thường sẽ có 4 camera: 2 camera trong xe, 1 camera trước xe, và 1 camera sau xe, đối với mỗi camera trước và sau, khi xe bus di chuyển từ trạm A đến một trạm B. Trên tuyến đường đó, xe bus sẽ quay được hình ảnh giao thông trên đường và xuất ra thành một file video. Sau đó, chúng ta sẽ cắt từng bức ảnh từ video đó theo một thời gian cố định và đưa vào công nghệ Deep Learning xử lý. Kết quả sau cùng sẽ là xác định được con đường này đang "KẸT XE" hay là "THÔNG THOÁNG".\par
+Từ ý tưởng ban đầu, cơ bản chỉ là phân tích và nêu lên kết quả trên một bức ảnh, tụi em đã mở rộng ra bằng việc dùng "Big Data" để lưu trữ dữ liệu, bao gồm: các file SQL và video lấy về từ xe bus. Đối với file SQL, có các thuộc tính như: Kinh độ, Vĩ độ, Thời gian,... và video từ camera hành trình được lấy từ xe bus. Từ đó, tụi em sẽ xác định được ở khoảng thời gian nào, ở vị trí nào, con đường đó có kẹt xe hay không và hiển thị trên bản đồ giao thông ở Tp. Hồ Chí Minh, giúp giảm tải việc kẹt xe ở các tuyến đường vào những giờ cao điểm, góp một phần tìm ra lời giải cho bài toán giao thông ở thành phố ta.\par
+\subsection{Tính khả quan:}
+\begin{itemize}
+\item ???
+\end{itemize}
+\subsection{Ưu điểm:}
+\begin{itemize}
+\item Hệ thống file được lưu trữ bằng cách dùng công nghệ Big Data - Hadoop.
+\end{itemize}
+\subsection{Hạn Chế:}
+\begin{itemize}
+\item Ảnh lấy từ Camera hành trình còn có nhiều hạn chế.
+\item Dòng Stream lấy từ Video chưa thực hiện một cách triệt để.
+\end{itemize}
 \section{Mục tiêu đề tài}
 Đối với đề tài này, giai đoạn đề cương sẽ tập trung tìm hiểu các kiến thưc về học sâu, mạng neuron và các khái niệm cơ bản, mong muốn xây dựng được mô hình có khả năng phân loại hình ảnh giao thông.\par
 Các công việc thực hiện:
 \begin{itemize}
 	\item Tìm hiểu các kiến thức về học sâu nói chung, mạng neuron nói riêng và ứng dụng.
 	\item Xây dựng được bộ dữ liệu phục vụ cho việc huấn luyện.
-	\item Cấu hình, sử dụng kiến trúc mạng có sẵn để huấn luyện.	
+	\item Cấu hình, sử dụng kiến trúc mạng có sẵn để huấn luyện.
+	\item Phân tích được tình trạng giao thông qua một bức ảnh.
+	\item Xác định được thời gian, kinh độ, vĩ độ, gắn với bức ảnh được trích ra từ camera.
+	\item Xuất ra được trên bản đồ Tp. Hồ Chí Minh vị trí đang có "KẸT XE" dựa trên thông tin đã được phân tích.	
 \end{itemize}
 
-CÁC CÂU HỎI CẦN TRẢ LỜI KHI VIẾT CHƯƠNG GIỚI THIỆU.
----TỔNG QUAN--\\
---Trình bày rõ vấn nạn hiện nay về giao thông như thế nào, cơ sở hạ tầng và cách giải quyết hiện nay ra sao.\\
---Tiếp theo trình bày ngày nay, dữ liệu liên tục được sinh ra ra sao?, với nguồn dữ liệu như vậy thì có lợi ích gì? Big data giúp ích gì cho cuộc sống và các vấn đề xã hội? Các công cụ big data ra sao?\\
---Nói nói làm sao đó chuyển qua machine learning,deep learning phát triển ra sao, các mô hinh học sâu liên tục được đưa ra như thế nào, độ chính xác ra sao, có dễ dàng áp dụng thực tiễn ko?\\
---Rồi nêu lên quan điểm của bạn như thế nào nếu học sâu kết hợp vs big data có khả thi hay ko. khả năng áp dụng thực tế như nào? Có ai đã áp dụng kết hợp DEep learning và big data hay chưa.?\\
---Rồi lái tới ý tưởng của đề tài --> đề tài này ra sao, có ứng dụng được không? tính khả quan của đề tài, hạn chế va ưu điểm của đề tài?\\
-----MỤC TIÊU ĐỀ TÀI----
-Chém ra vài cái mục tiêu đi...=)))))
 
 
