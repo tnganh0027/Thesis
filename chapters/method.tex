@@ -1,4 +1,4 @@
-\chapter{Mô hình loại ảnh giao thông}
+\chapter{Mô hình loại ảnh giao thông kết hợp Apache Hadoop}
 \section{Vấn đề và mục tiêu}
 	Đối với vấn đề phát hiện kẹt xe qua hình ảnh camera, chúng ta sẽ sử dụng mạng neuron tích chập với tập ảnh huấn luyện được trích xuất từ những đoạn video do camera hành trình xe buýt ghi lại trong thời gian hoạt động. Ngoài ra, chúng ta còn sử dụng mô hình googLeNet để áp dụng vào vấn đề và phương pháp transfer learning (sẽ được trình bày trong mục tiếp theo). \par
 \section{Phương pháp transfer learning}
@@ -82,47 +82,189 @@
 
 \section{Các bước hiện thực}
 
-	\subsection{Cài đặt Apache Hadoop trên cụm 3 máy tính}
-	Như nội dụng mục trên, các máy tính Hadoop đều sử dụng hệ điều hanh Ubuntu 18.04.\par
-	
-		\subsubsection{Cấu hình chuẩn bị}
+	\subsection{Cài đặt Apache Hadoop}
+	Trong phần hướng dẫn này chúng ta sẽ biết được cách cài đặt một cụm gồm nhiều máy Hadoop. Thông qua nhiều bước,ta sẽ biết cách cấu hình cũng như khởi tạo và kết thúc hoạt động của một cụm máy Hadoop.\par 
+	\subsubsection{Cấu hình cần thiết để cài đặt một cụm 3 máy hadoop}
+	Một cụm Hadoop có thể rất nhiều máy, nhưng để có được cái nhìn tổng quan và vì thời gian của đề tài nên chúng ta sẽ tiến hành cài Hadoop trên 3 máy tính. Việc bổ sung thêm máy trạm vào cụm sẽ được hướng dẫn ở nội dung cuối phần này.\par 
+	\begin{itemize}
+		\item \textbf{Số lượng máy tính: } 3 máy tính.
+		\item \textbf{Hệ điều hành: } sử dụng hệ điều hành Ubuntu phiên bản 14.04 hoặc 16.04 hoặc cao hơn.
+		\item \textbf{Phiên bản Apache Hadoop: }Gói cài đặt \href{http://hadoop.apache.org/releases.html}{Hadoop phiên bản 3.1.0}
+	\end{itemize}
+	\subsubsection{Cài đặt Hadoop trên máy Master(Namenode)}
+	Mục này được thực hiện chỉ riêng trên máy được chọn làm Master.
 		\begin{enumerate}
-			\item Cài đặt hệ điều hành 18.04 cho các máy tính sẽ cài Apache hadoop và đảm bảo rằng các máy được cấu hinh và cài các phần mềm hỗ trợ như sau.
+			\item \textbf{Các vấn đề trước khi cài đặt Hadoop:}
 			\begin{itemize}
-				\item Cài đặt \href{https://help.ubuntu.com/lts/serverguide/openssh-server.html}{openssh-server} để thực hiện bước kết nối ssh giữa máy master và datanodes.
-				\item Cài đặt \href{https://www.linuxuprising.com/2018/04/install-oracle-java-10-in-ubuntu-or.html}{Java 10 và cấu hình biến môi trường}.
-				\item Tải gói cài đặt \href{http://hadoop.apache.org/releases.html}{Apache Hadoop 3.1.0}.
-				\item Tạo user mới trên các máy ubuntu để sử dụng hadoop
+			\pagebreak
+				\item \textbf{Thêm địa chỉ IP đầu vào vào file \textit{/etc/hosts}}				
+				\begin{lstlisting}[caption=Nội dung file /etc/hosts]
+	127.0.0.1	localhost
+	127.0.1.1	master
+	192.168.1.50	master
+	192.168.1.61	slave
+	192.168.1.73	slave1
+
+				\end{lstlisting}
+				Chúng ta bỏ qua 2 dòng đầu của file va chú ý tới 3 dòng tiếp theo. bên cột trái, đó chính là lần lượt địa chỉ IP của 3 máy sẽ cài Hadoop. 192.168.1.50 là máy được chọn làm master và từ \textit{master} bên cột phải là hostname của máy đó. Tương tự 2 dòng cuối, đó là IP của 2 máy được chọn làm datanode và hostname lần lượt là \textit{slave, slave1}.\par 
+				\item \textbf{Cài đặt Java:} hiện nay, Java được cài ở đây sẽ có phiên bản là Java 8. Thực hiện lần lượt các lệnh sau trên terminal để cài đặt Java 8.
+				
+				\begin{lstlisting}[language=python,caption=Cài đặt Java 8]
+	sudo add-apt-repository ppa:webupd8team/java	
+	sudo apt-get update	
+	sudo apt-get install oracle-java8-installer
+	
+				\end{lstlisting}
+				
+				\item \textbf{Cấu hình SSH: } Thực hiện lần lượt các lệnh sau để cài cũng như cấu hình kết nối SSh máy master tới các máy datanodes.
+				\pagebreak
+				\begin{lstlisting}[caption=Cài đặt SSH]
+	sudo apt-get install openssh-server openssh-client	
+	ssh-keygen -t rsa -P ""	
+				\end{lstlisting}
+				Sao chép nội dung file .ssh/id\_rsa.pub của máy master đến file .ssh/authorized\_keys của máy master cũng như các máy datanodes. Sau đó kiểm tra kết nối đã thành công hay chưa bằng lệnh.\par
+				\begin{lstlisting}[caption=Kết nối SSH]
+	ssh slave
+	ssh slave1
+				\end{lstlisting}
+				
 			\end{itemize}
-			\item Lấy IP của tất cả máy đang có và gán vào file \textbf{etc/hosts} của máy được chọn làm master như sau
+			\item \textbf{Cài đặt Hadoop}
+			\begin{itemize}
+				\item \textbf{Tải gói cài đặt:}Tải gói cài đặt Hadoop theo link phía dưới\\
+				http://hadoop.apache.org/releases.html
+				\item \textbf{Giải nén gói cài đặt:}giải nén đến thu mục \textit{/usr/local} bằng câu lệnh
+				\begin{lstlisting}
+tar xzf hadoop-3.1.0.tar.gz -C /usr/local/
+				\end{lstlisting}
+				\item \textbf{Chỉnh sửa ~/.bashrc: }thêm các biến môi trường cài đặt Hadoop vào file ~/.bashrc như nội dung sau.
+				\pagebreak
+				\begin{lstlisting}
+export HADOOP_PREFIX="/usr/local/hadoop-3.1.0"
+export PATH=$PATH:$HADOOP_PREFIX/bin
+export PATH=$PATH:$HADOOP_PREFIX/sbin
+export HADOOP_MAPRED_HOME=${HADOOP_PREFIX}
+export HADOOP_COMMON_HOME=${HADOOP_PREFIX}
+export HADOOP_HDFS_HOME=${HADOOP_PREFIX}
+export YARN_HOME=${HADOOP_PREFIX}
+				\end{lstlisting}
+				Sau khi lưu nội dung chỉnh sửa, thưc thị \textit{source ~/.bashrc} để các biến hệ thống thiết lập các biến môi trường.
+				\item \textbf{Cấu hình file hadoop-env.sh: }cấu hình biến \textit{JAVA\_HOME}
+				\begin{lstlisting}
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+				\end{lstlisting}
+				Thay đổi đường dẫn \textit{JAVA\_HOME} nếu cài đặt Java 8 ở một nơi khác.
+				\item \textbf{Cấu hình file core-site.xml: }thêm các dòng sau
+				\begin{lstlisting}
+<configuration>
+<property>
+<name>fs.defaultFS</name>
+<value>hdfs://master:9000</value>
+</property>
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/home/'your\_user'/hdata</value>
+</property>
+</configuration>
+				\end{lstlisting}
+				\item \textbf{Cấu hinh file hdfs-site.xml: }thêm các nội dung như sau
+				\begin{lstlisting}
+<configuration>
+<property>
+<name>dfs.replication</name>
+<value>2</value>
+</property>
+</configuration>
+				\end{lstlisting}
+				\item \textbf{Cấu hinh file mapred-site.xml: }thêm các nội dung như sau
+				\begin{lstlisting}
+<configuration>
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+</configuration>
+				\end{lstlisting}
+				\item \textbf{Cấu hình yarn-set.xml: }thêm các nội dung như sau
+				\begin{lstlisting}
+<configuration>
+<property>
+<name>yarn.nodemanager.aux-services</name>
+<value>mapreduce_shuffle</value>
+</property>
+<property>
+<property>
+<name>yarn.resourcemanager.resource-tracker.address</name>
+<value>master:8025</value>
+</property>
+<property>
+<name>yarn.resourcemanager.scheduler.address</name>
+<value>master:8030</value>
+</property>
+<property>
+<name>yarn.resourcemanager.address</name>
+<value>master:8040</value>
+</property>
+</configuration>
+				\end{lstlisting}
+				\item \textbf{Cấu hình file workers: }thêm hostname của 3 máy trạm mà đã đặt ở file \textit{/etc/hosts}
+				\begin{lstlisting}
+master
+slave
+slave1
+				\end{lstlisting}
+			\end{itemize}
 			
+			
+			
+		\end{enumerate}
+		
+		\subsubsection{Cài đặt Hadoop trên các datanodes}
+		\begin{enumerate}
+			\item \textbf{Các cấu hình chuẩn bị: }
+			\begin{itemize}
+				\item \textbf{Thêm địa chỉ IP vào file /etc/hosts: }thực hiện giống như đã làm ở máy master
+				\item \textbf{Cài đặt Java 8}
+			\end{itemize}
+			\item \textbf{Cài đặt Hadoop cho tất cả máy datanodes: }thao tác này sẽ được thực hiện trên terminal của máy master.
+			\begin{itemize}
+				\item \textbf{sử dụng SSH để gửi file cài đặt: }thực hiện lần lượt các lệnh sau để gửi file cài đặt hadoop tới các máy datanodes
+				\begin{lstlisting}
+scp /usr/local/hadoop-3.1.0 slave:/usr/local/hadoop-3.1.0
+scp /usr/local/hadoop-3.1.0 slave1:/usr/local/hadoop-3.1.0
+				\end{lstlisting}
+				Sau các lệnh này được thực thi xong thì các máy datanodes đã được cài đặt hadoop thành công
+				\item \textbf{Cấu hình file ~/.bashrc: }chúng ta có thể copy nội dung từ file \textit{~/.bashrc} của master đến các máy datanodes.
+			\end{itemize}
+			
+			\item \textbf{Khởi động cụm máy Hadoop: }chạy các lệnh sau để khởi động Hadoop
+			\begin{itemize}
+				\item \textit{bin/hdfs namenode -format}
+				\item \textit{sbin/start-dfs.sh}			
+			\end{itemize}
+			\item \textbf{Kiểm tra xem Hadoop service:} lần lượt thực thi lệnh jps từ terminal của các máy master và datanode để kiểm tra, nếu kết quả như hình dưới đây thì các service hadoop đang hoạt động.
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[scale=0.18]{charts/neuron.png}
-				\caption{Cấu hình file hosts trên máy master}
-				\label{fig:hosts}
+				\includegraphics[scale=0.8]{charts/jps-m.png}
+				\caption{Kiểm tra Hadoop service trên master}
+				\label{fig:jps-m}
 			\end{figure}
-			\textbf{Viết tiếp IP nào là master, IP nào là slave và chèn hình lại}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[scale=0.8]{charts/jps-s.png}
+				\caption{Kiểm tra Hadoop service trên worker(slave)}
+				\label{fig:jps-s}
+			\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[scale=0.8]{charts/jps-s1.png}
+				\caption{Kiểm tra Hadoop service trên worker(slave1}
+				\label{fig:jps-s1}
+			\end{figure}
+			
 			
 		\end{enumerate}
-		
-		\subsubsection{Truy cập SSH}
-		SSH là giao thức mạng được sử dụng để đăng nhâp vào một máy tính từ xa. Hadoop sẽ sử dụng giao thức nay để kết nối các máy master và datanodes. Nhờ đó mà master có thể truy cập cũng như điều khiển các slaves.\par 
-		Trong hduser của máy được chọn làm master ta lần thực hiện các lệnh sau để khai triển SSH.
-		\begin{enumerate}
-			\item Sinh ra cặp public key và private key
-			\textbf{include graphic hình câu lệnh sshkeygen vào đây}
-			\item Copy public key tới các máy slave đã được chọn
-			\textbf{incude graphic các câu coppy id vào đây và giải thích}
-			\item Kiểm tra thử kết nối đã thành công bằng cách:
-			\textbf{include graphic hình kết nối thành công vô đây}
-		\end{enumerate}
-		
-		\subsubsection{Cài đặt Hadoop}
-			
-			
-		
-				
+	
 
 	\subsection{Xử lý dữ liệu}
 	
