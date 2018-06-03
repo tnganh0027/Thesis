@@ -1,18 +1,21 @@
 \chapter{Kết luận}
 
 \section{Các kết quả }
-Đề cương này giúp nghiên cứu, tìm hiểu về mạng học sâu cũng như việc phân loại ảnh giao thông. Các kết quả đã đạt được đáp ứng được các mục tiêu ở chương 1.
+Luận văn này giúp nghiên cứu, tìm hiểu về mạng học sâu cũng như việc phân loại ảnh giao thông. Các kết quả đã đạt được đáp ứng được các mục tiêu đã đặt ra.
 	\begin{itemize}
+		\item Xây dựng được mô hình HDFS sử dụng Apache Hadoop có thể lưu trữ dữ liệu video tập dư liệu ảnh
 		\item Xây dựng được bộ dữ liệu phục vụ cho việc huấn luyện mô hình phân biệt 2 loại ảnh giao thông. Số lượng anh thu thập được trung bình mỗi lớp khoảng 1000 cho đến 2000 ảnh.
-		\item Cài đặt, cấu hình các thông số cũng như mô hình mạng đã được huấn luyện trước, ứng dụng vào vấn đề phân loại ảnh giao thông.
-		\item Kết quả huấn luyện và kiểm thử đối với mạng googLeNet thu được khá tốt.
+		\item Huấn luyện thành công mô hinh học sâu GoogleNet sử dụng tập dữ liệu được lưu trữ tư hệ thống HDFS.
+		\item Xác định được vị trí và cho kết quả tình hình giao thông.
 	
 	\end{itemize}
 \section{Hướng phát triển}
 Sau khi đạt được kết quả huấn luyện khá tốt, hướng phát triển của đề tài trong tương lai như sau:
-\begin{itemize}
-	\item \textbf{Bước 1.} Tiếp tục xem xét việc xác định các lớp ảnh giảo thông trong tương lai giúp phát hiện nhiều loại hình như ùn tắt, thông thoáng, đông xe di chuyển chậm,.v.v. giúp cụ thể hóa tình trạng giao thông.
-	\item \textbf{Bước 2.} Xây dựng ứng dụng di động nhận biết kẹt xe.
-	\item \textbf{Bước 3.} Phát triển Web-service nhận thông tin hình ảnh từ các camera kết nối, phối hợp với mô hình đã huấn luyện để tiến hành phân loại giao thông.
-\end{itemize}
+\begin{enumerate}
+	\item Tiếp tục xem xét việc xác định các lớp ảnh giảo thông trong tương lai giúp phát hiện nhiều loại hình như ùn tắt, thông thoáng, đông xe di chuyển chậm,.v.v. giúp cụ thể hóa tình trạng giao thông.
+	\item Xây dựng trang web giúp nhận biết kẹt xe.
+	\item Có thể sử dụng nền tảng đã xây dựng để áp dụng cho nhiều bài toán phân loại ảnh khác.
+\end{enumerate}
+	
+
 Hệ thống tiềm năng trên có thể giúp dân cư sinh sống ở các khu đô thị cũng như ban quản lý nắm bắt tình hình giao thông để phân luồng di chuyển và khắc phục một cách nhanh nhất.
