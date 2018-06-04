@@ -1,11 +1,21 @@
 \chapter{Kết quả huấn luyện và đánh giá}
 \section{Kết quả huấn luyện}
-Với các thông số cà mạng đã cấu hình ở chương trước, \ref{fig:res} cho thấy kết quả huấn sau khi huấn luyện mạng có kết quả tương đối tốt với giá trị \(cross_entropy = 0.015052\) và độ chính xác ở tập kiểm thử là 97.7\%. Không những thế việc áp dụng kỹ thuật transfer learning giúp tối tiết kiệm thời gian huấn luyện gấp nhiều lần. Cụ thể, việc xây dựng mô hình thủ công và huấn luyện lại từ đầu đối với máy tính không hỗ trợ card GPU sẽ mất thời gian là 8 tiếng nhưng đối với việc áp dụng mô hình inception model với kỹ thuật transfer learning thì chỉ mất từ 45 đến 60 phút để hoàn thành.
+Với các thông số cà mạng đã cấu hình ở chương trước, \ref{fig:res} cho thấy kết quả huấn sau khi huấn luyện mạng có kết quả tương đối tốt với giá trị \(cross_entropy = 0.29\) và độ chính xác ở tập kiểm thử là 88.7\%. Không những thế việc áp dụng kỹ thuật transfer learning giúp tiết kiệm thời gian huấn luyện gấp nhiều lần. Cụ thể, việc xây dựng mô hình thủ công và huấn luyện lại từ đầu đối với máy tính không hỗ trợ card GPU sẽ mất thời gian là 8 tiếng nhưng đối với việc áp dụng mô hình inception model với kỹ thuật transfer learning thì chỉ mất từ 45 đến 60 phút để hoàn thành.\par
+\pagebreak
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.3]{charts/res.png}
-		\caption{Kết quả huấn luyện}
-		\label{fig:res}
+		\includegraphics[scale=0.5]{charts/accuracy.png}
+		\caption{Đồ thị biểu diễn độ chính xác (accuracy)}
+		\label{fig:accuracy}
+	\end{figure}
+
+Đồ thị \ref{fig:accuracy} biểu diễn chi tiết độ chính xác trong quá trình huấn luyện với đường màu cam biểu diễn cho quá trình huấn luyện và đường màu xanh lam biểu diễn cho kiểm tra trên tập Validation. Tương tự với \ref{fig:cross_entropy}.
+	\pagebreak
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.5]{charts/cross-entropy.png}
+		\caption{Đồ thị biểu diễn độ sai số (cross entropy)}
+		\label{fig:cross_entropy}
 	\end{figure}
 
 \section{Sử dụng mô hình phân loại ảnh mới}
