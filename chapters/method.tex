@@ -197,11 +197,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 	<name>yarn.nodemanager.aux-services</name>
 	<value>mapreduce_shuffle</value>
 </property>
-
-<property>
-	<name>yarn.resourcemanager.resource-tracker.address</name>
-	<value>master:8025</value>
-</property>
 <property>
 	<name>yarn.resourcemanager.scheduler.address</name>
 	<value>master:8030</value>
@@ -349,5 +344,23 @@ export PATH=$PATH:$DERBY_HOME/bin
 		
 	Sau khi hoàn tất tạo các giá trị bottleneck, việc thực hiện thực hiện cấu hình mạng và huấn luyện bắt đầu. Tổng số bước huấn luyện sẽ được cài đặt mặc định là 4000 bước, tuy nhiên có thể thay đổi lại tùy theo tình huống. Mỗi bước huấn luyện sẽ chọn ra 100 dữ liệu ngẫu nhiên \footnote{Tập dữ liệu lúc này là những bottlenecks} để đưa vào tầng cuối cùng \footnote{Tầng fully-connected với softmax là activation function} để dự đoán lớp, lớp dự đoán sẽ được so sánh với các lớp thực tế để mạng điều chỉnh và cập nhật các giá trị trọng số thông qua cơ chế lan truyền ngược như đã trình bày ở chương trước. Do phép toán được thực hiện trên tập huấn luyện nên sẽ  gây ra vấn đề overfit, vì thế mà tập validation sẽ được sử dụng để đo lại giá trị sai lệch và độ chính xác. Nếu độ chính xác tại tập huấn luyện cao nhưng tại tập validation không thay đổi hoặc thấp thì chứng tỏ mô hình mạng gặp phải vấn đề overfit và việc huấn luyện tiếp tục không còn có ích.
 	
-
+	\subsection{Chạy Huấn luyện bằng cách kết hợp tensorflow với hệ thống HDFS}
+	\subsubsection{Chuẩn bị}
+	Ở các nội dung trên, chúng ta đã thực hiện việc cài đặt Apache Hadoop cũng như các biến môi trường cần thiết, trong đó có hai biến môi trường cần thiết để chạy thực thi mô hình trên là \textbf{JAVA\_HOME} và vị trí cài đặt Hadoop\textbf{HADOOP\_HDFS\_HOME}. Bây giờ chúng ta sẽ cần thêm một biến môi trường cho hệ thống nữa.
+	\begin{itemize}
+		\item \textbf{LD\_LIBRARY\_PATH: }để thêm biến này, chúng ta cần thêm vào file \textit{~/.bashrc} nội dung như sau.	
+	\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.8]{charts/ldlib.png}
+			\caption{Nội dung thư viện LD\_LIBRARY\_PATH}
+	\end{figure}
+		
+	\end{itemize}
+	\subsubsection{Chạy mô hình huấn luyện.}
+	Chúng ta thực hiện câu lệnh sau đây để tiến hành chạy mô hình huấn luyện kết nối với tập dữ liệu ở HDFS.
+	\begin{figure}[h!]
+			\centering
+			\includegraphics[scale=0.8]{charts/run.png}
+			\caption{Câu lệnh thực thi huấn luyện mô hình}
+	\end{figure}
 

@@ -10,7 +10,7 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.18]{charts/neuron.png}
-		\caption{Tế bào thần kinh neuron sinh học}
+		\caption{Tế bào thần kinh neuron sinh học \cite{img-neuron}}
 		\label{fig:neuron}
 	\end{figure}
 	
@@ -21,7 +21,7 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.4]{charts/NN.png}
-		\caption{Cấu trúc cơ bản mạng neuron}
+		\caption{Cấu trúc cơ bản mạng neuron\cite{img-perceptron}}
 		\label{fig:NN}
 	\end{figure}
 	
@@ -89,7 +89,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.3]{charts/ffnn.png}
-				\caption{Ví dụ kiến trúc mạng feeddorward}
+				\caption{Ví dụ kiến trúc mạng feeddorward \cite{ffnn-img}}
 				\label{fig:ffnn}			
 			\end{figure}\\
 			Như hình \ref{fig:ffnn}, một mạng Feedorward, trong tầng input và ouput thì số lượng neuron tại mỗi hai tầng nãy sẽ là cố định tùy theo đặc tính của dữ liệu. Đối với tầng ẩn, số lượng tầng ẩn cũng như số lượng neuron trong mỗi tầng tùy thuộc vào cá nhân thiết kế.
@@ -177,14 +177,14 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.8]{charts/conv_layer1.png}
-			\caption{Convolutional layer}
+			\caption{Convolutional layer \cite{conv-layer}}
 			\label{fig:conv_layer1}
 		\end{figure}
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.8]{charts/conv_layer2.png}
-			\caption{Convolutional layer}
+			\caption{Convolutional layer \cite{conv-layer}}
 			\label{fig:conv_layer2}
 		\end{figure}
 		
@@ -193,7 +193,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/filter.png}
-			\caption{Mảng các giá trị của bộ lọc}
+			\caption{Mảng các giá trị của bộ lọc \cite{conv-layer}}
 			\label{fig:filter}
 		\end{figure}
 		
@@ -202,7 +202,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/mouse.png}
-			\caption{ảnh đầu vào}
+			\caption{ảnh đầu vào \cite{img-input}}
 			\label{fig:mouse}
 		\end{figure}
 		\pagebreak
@@ -210,7 +210,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/conv_1.png}
-			\caption{phép toán tích chập}
+			\caption{phép toán tích chập \cite{img-input}}
 			\label{fig:conv_1}
 		\end{figure}
 		
@@ -221,7 +221,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/conv_2.png}
-			\caption{phép toán tích chập}
+			\caption{phép toán tích chập \cite{img-input}}
 			\label{fig:conv_2}
 		\end{figure}
 		
@@ -230,7 +230,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/feature_map.png}
-			\caption{kết quả tầng tích chập}
+			\caption{kết quả tầng tích chập \cite{img-input}}
 			\label{fig:feature_map}
 		\end{figure}
 	
@@ -240,7 +240,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.7]{charts/max_pooling.png}
-			\caption{max-pooling 2 x 2}
+			\caption{max-pooling 2 x 2 \cite{img-pool}}
 			\label{fig:max-pooling}
 		\end{figure}
 		\pagebreak
@@ -250,7 +250,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.5]{charts/pooling_ex.png}
-			\caption{Ví dụ tầng tổng hợp}
+			\caption{Ví dụ tầng tổng hợp \cite{conv-layer}}
 			\label{fig:pooling_ex}
 		\end{figure}
 		
@@ -267,7 +267,7 @@
 	\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.7]{charts/googlenet.png}
-			\caption{GoogLeNet}
+			\caption{GoogLeNet \cite{1}}
 			\label{fig:googlenet}
 		\end{figure}
 		
@@ -278,20 +278,21 @@
 	\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=1.5]{charts/inception.png}
-			\caption{inception module}
+			\caption{inception module \cite{1}}
 			\label{fig:inception}
 	\end{figure}
 
 	\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.3]{charts/inception_nai.png}
-			\caption{naive inception module}
+			\caption{naive inception module \cite{1}}
 			\label{fig:nai_inception}
 	\end{figure}
 		
 	
 	
 	Hình \ref{fig:inception} miêu tả cấu trúc của một module trong mạng. Trong khi đó \ref{fig:nai_inception} là một ý tưởng ban đầu mà tác giả đã nghĩ tới. Ở \ref{fig:inception} chúng ta thấy trước khi thực hiện các phép tích chập với các filter 3 x 3 và 5 x 5, input đều được xử lý qua phép tích chập với filter 1 x 1. Các bộ lọc 1 x 1 có tác dụng làm giảm đi chiều của các input\cite{2}, điều này giúp cho khối lượng tham số phải tính toán ở phép toán tích chập với bộ lọc 3 x 3 và 5 x 5 sẽ được giảm đi một cách đáng kể.
+
 		
 	
 	
