@@ -8,7 +8,7 @@
 	\end{figure}
 
 \section{Tổng quan các bước}
-	Hệ thống phân loại ảnh kết hợp Apache Hadoop và mô hình học sâu Deeplearning sẽ được thực hiện dựa trên sơ đồ trên. Hiện nay, các xe buýt đều được trang bị camera hanh trình và hệ thống GPS. Các video được ghi lại sẽ được lưu tại một nơi. Do số lượng của các video được gửi vê liên tục và hàng ngày và giờ, nên việc sử dụng hệ thống lưu trữ HDFS của Apache Hadoop là lựa chọn hợp lý. Tiếp đến là việc truy xuất ảnh từ video và gán nhãn ảnh phục vụ cho việc huấn luyện mô hình học sâu. Đây cũng là công đoạn tốn kém chi phí nhất. Sau cùng là việc huấn luyện tập dữ liệu đã xây dựng.
+	Hệ thống phân loại ảnh kết hợp Apache Hadoop và mô hình học sâu Deeplearning sẽ được thực hiện dựa trên sơ đồ trên. Hiện nay, các xe buýt đều được trang bị camera hanh trình và hệ thống GPS. Các video được ghi lại sẽ được lưu tại một nơi. Do số lượng của các video được gửi về liên tục và hàng ngày và giờ, nên việc sử dụng hệ thống lưu trữ HDFS của Apache Hadoop là lựa chọn hợp lý. Tiếp đến là việc truy xuất ảnh từ video và gán nhãn ảnh phục vụ cho việc huấn luyện mô hình học sâu. Đây cũng là công đoạn tốn kém chi phí nhất. Sau cùng là việc huấn luyện tập dữ liệu đã xây dựng.
 	
 \section{Mô tả tập dữ liệu}
 	
@@ -111,7 +111,7 @@
 	192.168.1.73	slave1
 
 				\end{lstlisting}
-				Chúng ta bỏ qua 2 dòng đầu của file va chú ý tới 3 dòng tiếp theo. bên cột trái, đó chính là lần lượt địa chỉ IP của 3 máy sẽ cài Hadoop. 192.168.1.50 là máy được chọn làm master và từ \textit{master} bên cột phải là hostname của máy đó. Tương tự 2 dòng cuối, đó là IP của 2 máy được chọn làm datanode và hostname lần lượt là \textit{slave, slave1}.\par 
+				Chúng ta bỏ qua 2 dòng đầu của file va chú ý tới 3 dòng tiếp theo. Bên cột trái, đó chính là lần lượt địa chỉ IP của 3 máy sẽ cài Hadoop. 192.168.1.50 là máy được chọn làm master và từ \textit{master} bên cột phải là hostname của máy đó. Tương tự 2 dòng cuối, đó là IP của 2 máy được chọn làm datanode và hostname lần lượt là \textit{slave, slave1}.\par 
 				\item \textbf{Cài đặt Java:} hiện nay, Java được cài ở đây sẽ có phiên bản là Java 8. Thực hiện lần lượt các lệnh sau trên terminal để cài đặt Java 8.
 				
 				\begin{lstlisting}[language=python,caption=Cài đặt Java 8]
@@ -121,7 +121,7 @@
 	
 				\end{lstlisting}
 				
-				\item \textbf{Cấu hình SSH: } Thực hiện lần lượt các lệnh sau để cài cũng như cấu hình kết nối SSh máy master tới các máy datanodes.
+				\item \textbf{Cấu hình SSH: } Thực hiện lần lượt các lệnh sau để cài cũng như cấu hình kết nối SSH máy master tới các máy datanodes.
 				\pagebreak
 				\begin{lstlisting}[caption=Cài đặt SSH]
 	sudo apt-get install openssh-server openssh-client	
@@ -136,13 +136,13 @@
 			\end{itemize}
 			\item \textbf{Cài đặt Hadoop}
 			\begin{itemize}
-				\item \textbf{Tải gói cài đặt:}Tải gói cài đặt Hadoop theo link phía dưới\\
+				\item \textbf{Tải gói cài đặt: }Tải gói cài đặt Hadoop theo link phía dưới\\
 				http://hadoop.apache.org/releases.html
-				\item \textbf{Giải nén gói cài đặt:}giải nén đến thu mục \textit{/usr/local} bằng câu lệnh
+				\item \textbf{Giải nén gói cài đặt: }Giải nén đến thu mục \textit{/usr/local} bằng câu lệnh
 				\begin{lstlisting}
 tar xzf hadoop-3.1.0.tar.gz -C /usr/local/
 				\end{lstlisting}
-				\item \textbf{Chỉnh sửa ~/.bashrc: }thêm các biến môi trường cài đặt Hadoop vào file ~/.bashrc như nội dung sau.
+				\item \textbf{Chỉnh sửa ~/.bashrc: }Thêm các biến môi trường cài đặt Hadoop vào file ~/.bashrc như nội dung sau.
 				\pagebreak
 				\begin{lstlisting}[language=bash]
 export HADOOP_PREFIX="/usr/local/hadoop-3.1.0"
@@ -172,7 +172,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 </property>
 </configuration>
 				\end{lstlisting}
-				\item \textbf{Cấu hinh file hdfs-site.xml: }thêm các nội dung như sau
+				\item \textbf{Cấu hình file hdfs-site.xml: }thêm các nội dung như sau
 				\begin{lstlisting}[language=XML]
 <configuration>
 <property>
@@ -181,7 +181,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 </property>
 </configuration>
 				\end{lstlisting}
-				\item \textbf{Cấu hinh file mapred-site.xml: }thêm các nội dung như sau
+				\item \textbf{Cấu hình file mapred-site.xml: }thêm các nội dung như sau
 				\begin{lstlisting}[language=XML]
 <configuration>
 <property>
@@ -268,12 +268,12 @@ scp /usr/local/hadoop-3.1.0 slave1:/usr/local/hadoop-3.1.0
 	\subsubsection{Thêm một datanodes vào một cụm Hadoop đang hoạt động}
 	Trong quá trình sử dụng, việc muốn mở rộng cụm máy Hadoop là điều có thể xảy ra. Chúng ta có thể dễ dàng thêm một datanodes và một cụm máy Hadoop đang hoạt động theo các bước sau.
 	\begin{enumerate}
-		\item \textbf{Cài đặt Java 8: }đảm bảo rắng máy được thêm vào cụm phải được cài đặt Java 8 như đã trình bày ở phía trên.
+		\item \textbf{Cài đặt Java 8: }đảm bảo rằng máy được thêm vào cụm phải được cài đặt Java 8 như đã trình bày ở phía trên.
 		\item \textbf{Thêm địa chỉ IP vào /etc/hosts: }thêm địa chỉ IP của máy datanode mới vào file /etc/hosts của máy master và các máy datanodes đã có cũng như datanode mới.
 		\item \textbf{Cấu hình SSH: }copy nội dung file ~/.ssh/id\_rsa.pub vào máy datanodes mới giống như đã làm với các máy datanode đã trước.
 		\item \textbf{Cài đặt Hadoop: }chúng ta cũng sử dụng SSH để gửi thư mục cài Hadoop từ máy master sang máy datanode mới như đã thực hiện.
 		\item \textbf{Cấu hình file workers: }thêm hostname của máy datanode mới vào file workers trên máy master.
-		\item \textbf{Khởi động datanode: }thực hiện ile \textit{start-dfs.sh} trong thư mục sbin trên máy master để tiến hiện khởi động datanode mới vào cụm máy.
+		\item \textbf{Khởi động datanode: }thực hiện file \textit{start-dfs.sh} trong thư mục sbin trên máy master để tiến hiện khởi động datanode mới vào cụm máy.
 	\end{enumerate}
 		
 	\subsubsection{Lưu trữ dữ liệu ảnh trên HDFS}
@@ -281,7 +281,7 @@ scp /usr/local/hadoop-3.1.0 slave1:/usr/local/hadoop-3.1.0
 	\begin{lstlisting}
 hdfs dfs -put ~/Document/traffic/ hdfs://master:9000/
 	\end{lstlisting}
-	Với \textit{~/Document/traffic} là đương dẫn đến thư mục lưu dữ liệu ảnh, và \textit{hdfs://master:9000/} là đường dẫn đến vị trị lưu của HDFS. Để xem kết quả put ta thực hiện lệnh sau để liệt kê các thư mục dữ liệu đã được lưu trên HDFS.
+	Với \textit{~/Document/traffic} là đương dẫn đến thư mục lưu dữ liệu ảnh, và \textit{hdfs://master:9000/} là đường dẫn đến vị trí lưu của HDFS. Để xem kết quả put ta thực hiện lệnh sau để liệt kê các thư mục dữ liệu đã được lưu trên HDFS.
 	\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.6]{charts/dfs-ls.png}

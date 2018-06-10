@@ -33,7 +33,7 @@
 		\begin{itemize}
 			\item \textbf{\textit{Tầng input - input layer: }}các nối ở tầng này nhận dữ liệu đầu vào và truyền tới các node ở các tầng kế tiếp, trong một số trường hợp còn có chức năng xử lý thông tin.
 			\item \textbf{\textit{Tầng ẩn - hidden layer: }}một số mạng có thể có thêm tầng ẩn, số lượng tầng ẩn trong một mạng có thể nhiều hơn 1. Có chức năng nhận các giá trị từ từng input hoặc tầng ẩn trước nó, tính toán các giá trị và gửi đến các node ở các tầng ẩn hoặc tầng ouput tiếp theo đó tùy theo từng mạng cụ thể.
-			\item \textbf{\textit{Tâng output - output layer: }}nhận giá trị từ tầng trước đó (tầng ẩn hoặc tầng input) để tính toán các giá trị ngõ ra.
+			\item \textbf{\textit{Tầng output - output layer: }}nhận giá trị từ tầng trước đó (tầng ẩn hoặc tầng input) để tính toán các giá trị ngõ ra.
 		\end{itemize}
 		\item \textbf{Các liên kết:} mỗi node trong một tầng truyền thông tin qua các node ở các tầng khác thông qua các liên kết. Các giá trị mà các liên kết này được gán sẽ được gọi là trọng số liên kết (weight). Giá trị trọng số được kết nối vào neuron j với neoron k là \(w_{kj}\).
 		\item \textbf{Hàm truyền - transfer function: }dùng để tính tổng các tích input với trọng số liên kết của nó. \[ \sum input_j*w_{ij}\]
@@ -197,7 +197,7 @@
 			\label{fig:filter}
 		\end{figure}
 		
-		Khi bộ lọc trên trượt đến vùng được đánh dấu vàng có dạng đường cong giống với bộ lọc như hình \ref{fig:mouse}. Lúc đó phép toán   tích châpj sẽ được thực hiện như hình \ref{fig:conv_1} với ma trận bên trái chính là giá trị pixel của vùng được đánh dấu trên ảnh mà bộ lọc trượt tới, ma trận bên phải chính là bộ lọc được sử dụng hiện tại.
+		Khi bộ lọc trên trượt đến vùng được đánh dấu vàng có dạng đường cong giống với bộ lọc như hình \ref{fig:mouse}. Lúc đó phép toán   tích châp sẽ được thực hiện như hình \ref{fig:conv_1} với ma trận bên trái chính là giá trị pixel của vùng được đánh dấu trên ảnh mà bộ lọc trượt tới, ma trận bên phải chính là bộ lọc được sử dụng hiện tại.
 		
 		\begin{figure}[h!]
 			\centering
@@ -258,7 +258,7 @@
 	\subsubsection{Fully Connected Layer}
 		Sau khi thông tin input đã qua các tầng tích chập và tổng hợp, các giá trị dữ liệu sẽ đi đến tầng fully connected để xuất ra kết quả. Kết quả tại tầng fully connected là một vector có kích thước bằng với số lớp(nhãn) mà bài toán cần dự đoán. Như bài toán phân loại ảnh giao thông ùn tắt và thông thoáng thì lúc này số nhãn cần dự đoán và kích thước vector tại tầng này sẽ bằng 2. Giá trị của các phần tử trong vector sẽ là giá trị xác suất của mỗi nhãn mà mạng dự đoán, [ 0.8, 0.2 ] sẽ biểu diễn 80\% ảnh này thuộc lớp 1 và 20\% ảnh thuộc lớp thứ 2. Về cơ bản, cách kết nối ở tầng này giống như cách kết nối neuron giữa các tầng với nhau ở mạng neuron ở mục trước. Khi đó, tất cả neuron ở tầng pooling sẽ kết nối với từng neuron trong tầng cuối.
 	
-\subsection{Kiến trúc mạng GoogLeNet)}
+\subsection{Kiến trúc mạng GoogLeNet}
 	
 	\subsubsection{Ý tưởng}
 	Đây là kiến trúc mạng tích chập với 22 tầng. GoogLeNet còn là quán quân của ILSVRC 2014 \cite{1}. Mạng googLeNet có cấu trúc mạng nằm trong mạng, có 9 tầng mà mỗi tầng là một inception module. Theo tài liệu cho biết, việc áp dụng inception module giúp làm giảm đáng kể số lượng tham số tính toán giúp giải quyết vấn đề về tài nguyên. \ref{fig:googlenet} minh họa cho cấu trúc của mạng googLeNet.
