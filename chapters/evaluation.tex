@@ -20,7 +20,7 @@ Với các thông số mạng đã cấu hình ở chương trước, việc hu�
 	\end{figure}
 
 \section{Sử dụng mô hình phân loại ảnh mới}
-	Sử dụng mô hình để phân loại một số hình ảnh khác chưa được phân loại. \ref{fig:test1} có thể nhận biết bằng mắt thường là hình ảnh của những con đường đang trong tình trạng ùn tắt. Khi đưa ảnh vào mô hình, ta thu được kết quả phân loại với hai giá trị \textit{ket} và \textit{thong} lần lươt là 0.9910778 và 0.0089. Các con số này mang ý nghĩa bộ phân lớp cho rằng tấm ảnh trên có  khoảng 99\% là thuộc về lớp kẹt xe và xấp xỉ 1\% là thuộc về lớp thông thoáng.\par 
+	Sử dụng mô hình để phân loại một số hình ảnh khác chưa được phân loại. Hình \ref{fig:test1} có thể nhận biết bằng mắt thường là hình ảnh của những con đường đang trong tình trạng ùn tắt. Khi đưa ảnh vào mô hình, ta thu được kết quả phân loại với hai giá trị \textit{ket} và \textit{thong} lần lươt là 0.9910778 và 0.0089. Các con số này mang ý nghĩa bộ phân lớp cho rằng tấm ảnh trên có  khoảng 99\% là thuộc về lớp kẹt xe và xấp xỉ 1\% là thuộc về lớp thông thoáng.\par 
 	\pagebreak	
 	\begin{figure}[h!]
 		\centering
@@ -30,6 +30,7 @@ Với các thông số mạng đã cấu hình ở chương trước, việc hu�
 		\label{fig:test1}
 	\end{figure}
 	
+	Tương tự đối với hình \ref{fig:test2}, cũng là một hình ảnh thể hiện tình trạng giao thông đang bị ùn ứ, khó khăn trong việc di chuyển. Mô hình đã đưa ra kết quả phân loại với hai giá trị \textit{ket} và \textit{thong} lần lượt là 0.9616194 và 0.038380623. Tức là 96 \% thuộc về lớp kẹt xe, 3.8\% là thuộc về lớp thông thoáng
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=1]{charts/test-ket1.jpg}
@@ -39,8 +40,10 @@ Với các thông số mạng đã cấu hình ở chương trước, việc hu�
 	\end{figure}
 	
 	\pagebreak
-	Đối với hai hình ảnh tiếp theo được phân biệt vào loại đường thông thoáng một cách dễ dàng. Mô hình dự đoán xác suất hai hình ảnh dưới đây thuộc lớp thông thoáng lần lượt là.
+	Đối với hai hình ảnh tiếp theo được phân biệt vào loại đường thông thoáng một cách dễ dàng. Mô hình dự đoán xác suất hai hình ảnh dưới đây thuộc lớp thông thoáng lần lượt là. \par 
+	
 	\pagebreak
+	Ở hình \ref{fig:test3}, khi nhìn vào camera ta có thể nhận biết được vào thời điểm này, các phương tiện trên đường rất ít, di chuyển rất dễ dàng, không xảy ra tình trạng kẹt xe hay ùn tắt nào. Mô hình cũng đã đưa ra kết quả với hai giá trị \textit{ket} và \textit{thong} lần lượt là 0.005655429 và 0.9943446. Tức là 99.4 \% thuộc về lớp thông thoáng, xấp xỉ 0.6 \% thuộc về lớp kẹt xe. \par
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=1]{charts/image0125.jpg}
@@ -49,7 +52,7 @@ Với các thông số mạng đã cấu hình ở chương trước, việc hu�
 		\label{fig:test3}
 	\end{figure}
 	
-	
+	Tương tự với hình \ref{fig:test4}, ta nhận thấy trong hình ảnh này, các phương tiện đang cách xe buýt một khoảng tương đối xa, mặt đường ở giữa khá thông thoáng để di chuyển. Từ đó, mô hình đã đưa ra kết quả với hai giá trị \textit{ket} và \textit{thong} lần lượt là 0.10274496 và 0.89725506. Tức là 89.7 \% thuộc về lớp thông thoáng, và xấp xỉ 10.3 \% thuộc về lớp kẹt xe. \par
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=1]{charts/image0126.jpg}
