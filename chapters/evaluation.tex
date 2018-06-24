@@ -1,6 +1,7 @@
 \chapter{Kết quả huấn luyện và đánh giá}
 \section{Kết quả huấn luyện}
-Với các thông số mạng đã cấu hình ở chương trước, \ref{fig:res} cho thấy kết quả huấn sau khi huấn luyện mạng có kết quả tương đối tốt với giá trị \(cross_entropy = 0.29\) và độ chính xác ở tập kiểm thử là 88.7\%. Không những thế việc áp dụng kỹ thuật transfer learning giúp tiết kiệm thời gian huấn luyện gấp nhiều lần. Cụ thể, việc xây dựng mô hình thủ công và huấn luyện lại từ đầu đối với máy tính không hỗ trợ card GPU sẽ mất thời gian là 8 tiếng nhưng đối với việc áp dụng mô hình inception model với kỹ thuật transfer learning thì chỉ mất từ 45 đến 60 phút để hoàn thành.\par
+Với các thông số mạng đã cấu hình ở chương trước, việc huấn luyện mạng mang lạikết quả tương đối tốt với giá trị \(cross_entropy = 0.29\) và độ chính xác ở tập kiểm thử là 88.7\%. Không những thế việc áp dụng kỹ thuật transfer learning giúp tiết kiệm thời gian huấn luyện gấp nhiều lần. Cụ thể, việc xây dựng mô hình thủ công và huấn luyện lại từ đầu đối với máy tính không hỗ trợ card GPU sẽ mất thời gian là 8 tiếng nhưng đối với việc áp dụng mô hình inception model với kỹ thuật transfer learning thì chỉ mất từ 45 đến 60 phút để hoàn thành.\par
+
 \pagebreak
 	\begin{figure}[h!]
 		\centering
@@ -19,9 +20,8 @@ Với các thông số mạng đã cấu hình ở chương trước, \ref{fig:r
 	\end{figure}
 
 \section{Sử dụng mô hình phân loại ảnh mới}
-	Sử dụng mô hình để phân loại một số hình ảnh khác chưa được phân loại. \ref{fig:test1} và \ref{fig:test2} có thể nhận biết bằng mắt thường đây là hình ảnh của những con đường đang trong tình trạng ùn tắt. Kết quả dự đoán cho lớp cả hai hình ảnh này là chính xác theo lớp kẹt xe.
-	\pagebreak
-	
+	Sử dụng mô hình để phân loại một số hình ảnh khác chưa được phân loại. \ref{fig:test1} có thể nhận biết bằng mắt thường là hình ảnh của những con đường đang trong tình trạng ùn tắt. Khi đưa ảnh vào mô hình, ta thu được kết quả phân loại với hai giá trị \textit{ket} và \textit{thong} lần lươt là 0.9910778 và 0.0089. Các con số này mang ý nghĩa bộ phân lớp cho rằng tấm ảnh trên có  khoảng 99\% là thuộc về lớp kẹt xe và xấp xỉ 1\% là thuộc về lớp thông thoáng.\par 
+	\pagebreak	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=1]{charts/test-ket.jpg}

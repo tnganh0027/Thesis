@@ -1,0 +1,18 @@
+\chapter{Tổng quan về hệ thống phân loại ảnh giao thống kết hợp với lưu trữ dữ liệu lớn}
+Bài toán hệ thống phân loại ảnh giao thông kết hợp lưu trữ dữ liệu lớn là một vấn đề khó thuộc lĩnh vực học sâu (deep learning) và liên quan đền vấn đề lưu trữ dữ liệu lớn. Bài toán đặt ra nhiều thách thức, để tìm được câu trả lời phù hợp. Chương này chúng ta tổng quan về các mạng học sâu cũng như các vấn đề dữ liệu lớn để thấy được các nghiên cứu đã có.
+\section{Giới thiệu hệ thống phân loại ảnh giao thông kết hợp với dữ liệu lớn}
+Hệ thống phân loại ảnh giao thông kết hợp với lưu trữ dữ liệu lớn bao gồm hai vấn đề chính đó là sử dụng lĩnh vực học sâu để huấn luyện tập dữ liệu ảnh giao thông với mục đích dự đoán và kiểm soát ùn tắt giao thông. Vấn đê kế tiếp đó chính là hệ thống lưu trữ dữ liệu video từ camera.\par 
+Vấn đề kết hợp lĩnh vực học sâu và với hệ thống dữ liệu lớn đang được nhiều nhà nghiên cứu cũng như nhiều công ty lớn đang tìm hiểu.
+\subsection{Các công trình nghiên cứu}
+\subsubsection*{Vấn đề phân loại ảnh}
+Trước tiên, với lĩnh vực phân loại ảnh, hiện nay đã có rất nhiều nhóm hoặc công ty đã cho ra đời nhiều kiến trúc mạng neuron phức tạp có độ chính xác cao như LeNet, ResNet, AlexNet, GoogleNet. Cùng với sự phát triển của tập dữ liệu ImageNet với 1000 lớp phân loại tổng cộng khoảng 1,2 triệu ảnh thì các kiến trúc mạng phân lớp có kiến trúc ngày càng phức tạp hơn được tạo ra nhằm đáp ứng tối đa nhu cầu phân loại đó.\par
+
+\subsubsection*{Vấn đề dữ liệu lớn}
+Google, Oracle hay Amazon, Apache là những người đi đầu trong việc phát triển các dịch vụ cũng như framework lưu trữ dữ liệu lớn như Apache Hadoop, dịch vụ Google Cloud,... Tuy nhiên, một số các dịch vụ thường hay có giá thanh đắt đỏ.\par 
+Ngoài ra, hiện nay còn có một số nhóm nghiên cứu, trực hay không trực thuộc các tổ chức doanh nghiệp cũng đã phát triển các hệ thống kết hợp lĩnh vực học máy, học sâu với các kiến trúc lưu trữ dữ liệu lớn như Databricks, Yahoo với TensorflowOnSpark.\par 
+
+\section{Kết luận chương}
+Đề tài "Nhận dạng ảnh giao thông qua camera hành trình này" được thực hiện với mục đích xây dựng một hệ thống mô phỏng lưu trữ dữ liệu giao thông sử dụng các công cụ lưu trữ dữ liệu lớn và kết nối với mạng học sâu huấn luyện trên tập ảnh giao thông tự xây dựng.\par 
+Luận văn sẽ tập trung nghiên cứu về lý thuyết mô hình học sâu, kiến trúc mạng tích chập được sử dụng, thực hiện huấn luyện trên tập ảnh giao thông hai lớp kẹt xe và thông thoáng. Từ đó, kết nối xây dựng và cài đặt hệ thống mô phỏng lưu trữ dữ liệu camera giao thông sử dụng các nền tảng dữ liệu lớn.
+
+
