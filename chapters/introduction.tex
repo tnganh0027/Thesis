@@ -1,13 +1,24 @@
 \chapter{Giới thiệu}
 
 \section{Tổng quan}
-	Với sự phát triển nhanh chóng của nước ta, với cơ sở hạ tầng giao thông còn chưa hoàn thiện nên nạn ùn tắt giao thông là điều không thể tránh khỏi. Các công tác nhận biết và xử lý các chốt ùn tắt tương đối chậm và chưa hiệu quả. Nạn ùn tắt giao thông có thể là nguyên nhân chính trong việc kiềm hãm sự phát triển.\par
-	Trong những năm gần đây, sự bùng nổ kỹ thuật số và thông tin cho thấy những công trình nghiên cứu mang tính ứng dụng cao trong các lĩnh vực trí tuệ nhân tạo. Điển hình là chủ đề học máy, học sâu, sự phát triển mạnh của hai chủ đề này khiến cho vấn đề phân loại hình ảnh đạt tới một cột mốc mới. Đề tài "Phát hiện kẹt xe qua camera hành trình" kỳ vọng có thể áp ựng mô hình học sâu để nhận biết tình trạng giao thông.
-\section{Mục tiêu đề tài}
-Đối với đề tài này, giai đoạn đề cương sẽ tập trung tìm hiểu các kiến thưc về học sâu, mạng neuron và các khái niệm cơ bản, mong muốn xây dựng được mô hình có khả năng phân loại hình ảnh giao thông.\par
-Các công việc thực hiện:
-\begin{itemize}
-	\item Tìm hiểu các kiến thức về học sâu nói chung, mạng neuron nói riêng và ứng dụng.
-	\item Xây dựng được bộ dữ liệu phục vụ cho việc huấn luyện.
-	\item Cấu hình, sử dụng kiến trúc mạng có sẵn để huấn luyện.	
-\end{itemize}
+	 Từ những năm gần đây, tình trạng ùn tắc giao thông ở Tp.Hồ Chí Minh đã không dừng lại ở diễn biến phức tạp mà lại còn gia tăng hơn trước. Cụ thể, trên các tuyến đường hiện nay, tình trạng kẹt xe không chỉ xảy ra ở giờ cao điểm mà còn ở các khung giờ khác. Nguyên nhân dẫn đến sự việc trên, một phần ảnh hưởng bởi điều kiện thời tiết, một phần do các công trình cải tạo hạ tầng, khi thi công lấn chiếm mặt đường. Nhưng phần lớn là do mật dộ xe cộ ngày một đông dần, dẫn đến việc ùn ứ, ùn tắt, di chuyển chậm,... Từ những nguyên nhân đó, nhóm sinh viên chúng em đã xây dựng mô hình hệ thống phát hiện kẹt xe từ camera hành trình (cụ thể là camera hành trình xe buýt), với mong muốn có thể góp phần giải quyết được một phần nhỏ tình trạng giao thông hiện nay ở Tp. Hồ Chí Minh nói riêng cũng như ở Việt Nam nói chung. \\
+	 Thông qua từng giai đoạn xây dựng hệ thống, đã giúp cho chúng em có thể tiếp cận, học hỏi thêm nhiều kiến thức về các công nghệ nổi tiếng hiện nay như: Deep Learning, Tensorflow, Apache Hadoop, Apache Hive,... Từ những ý tưởng ban đầu, cơ bản chỉ là việc \textbf{Phân tích một bức ảnh giao thông và nêu lên kết quả là: "Kẹt xe", "Thông thoáng"} thông qua việc huấn luyện dữ liệu trên kiến trúc \textsl{GoogleNet - sẽ được trình bày ở chương 2}, tụi em đã phát triển, mở rộng ra bằng việc ứng dụng dữ liệu lớn (Big Data) như Apache Hadoop để tiến hành lưu trữ dữ liệu (bao gồm: các file video định dạng \textbf{.avi} được lấy từ camera hành trình xe buýt, các file hình ảnh được định dạng \textbf{.jpg} được cắt ra từ video, đem vào phân tích,... và một file SQL định dạng \textbf{???} được lưu trữ bằng Apache Hive với các thuộc tính như: Kinh độ, Vĩ độ, Thời gian,... , \textsl{(nội dung của Hadoop \& Hive sẽ được trình bày ở chương 3)}.  \\
+	 Trong quá tình hoàn thành từng giai đoạn, tụi em đã thấy được những mặt khó khăn trong quá trình thực hiện, đó là việc vận dụng mô hình để nhận biết hình ảnh \textbf{t nghĩ phần này phải do m viết, t viết nó lủng củng lắm}. \\
+	 Những dạng bài toán về việc phân tích ảnh đã có rất nhiều thuật toán, mô hình cũng như là các công nghệ đã được đề xuất và áp dụng rộng rãi. Nhóm chúng em cũng sử dụng lại một mô hình có sẵn đó chính là GoogleNet để giúp cho việc huấn luyện dữ liệu được tối ưu hơn (cụ thể là khi chúng ta cần mở rộng nhãn - "label" của đối tượng). Điểm khác biệt của nhóm em, đó là ngoài việc ứng dụng lại mô hình kiến trúc GoogleNet, tụi em sẽ tích hợp vào trong Hadoop, thiết kế thành một hệ thống vừa có thể lưu trữ video, vừa có thể phân tích hình ảnh và lấy dữ liệu gps (kinh độ, vĩ độ, thời gian,...) để xuất ra thông tin về tình trạng giao thông ở vị trí đó như thế nào, đó cũng là chính là mục đích để tụi em tiến hành và phát triển bài toán.\\
+	 Bên cạnh đó, có những vấn đề khó khăn vẫn chưa giải quyết được trong bài toán, sẽ được trình bày ở phần tiếp theo.\\
+
+\subsection{Tính khả quan}
+	Đề đánh giá về tính khả quan trong đề tài này, chúng ta cần phân tích một số đặc điểm. Thứ nhất là về tập ảnh giao thông, ở đây, tập ảnh giao thông tốt hay không tuỳ thuộc vào nhiều yếu tố như nguồn gốc tập ảnh hay cơ cấu hạ tầng camera giao thông được đầu tư như thế nào. Đối với thành phố Hồ Chí Minh nói riếng, chúng ta vẫn còn đang xây dựng hệ thống cơ sở hạ tầng giám sát nên chưa thể dựa vào nguồn camera giám sát để lấy dữ liệu. Vì thế, chúng em sẽ sử dụng tập ảnh từ camera hành trình trên các xe buýt để thực hiện xây dựng mô hình. Khi đã có tập dữ liệu đủ tốt, chúng ta có thể sử dụng mô hình được xây dựng trên đề tài này và có thể được áp dụng vào hệ thống thực tiễn.
+
+\subsection{Ưu điểm}
+	\begin{itemize}
+		\item{Hệ thống file được lưu trữ bằng cách dùng công nghệ Apache Hadoop.}
+	\end{itemize}
+	
+\subsection{Nhược điểm}
+	\begin{itemize}
+		\item{Ảnh lấy từ Camera hành trình còn có nhiều hạn chế.}
+		\item{Dòng Stream lấy từ Video chưa thực hiện một cách triệt để.}
+		\item{Mô hình hệ thống còn gặp nhiều khó khăn trong việc áp dụng vào bài toán thực tế.}
+	\end{itemize}
+	  
