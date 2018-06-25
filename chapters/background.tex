@@ -1,8 +1,8 @@
-\chapter{Mạng neural và Mạng neural tích chập (Convolutional Neural Networks CNN}
+\chapter{Cơ sở lý thuyết}
 
-\section{Mạng neural (Neural Network)}
+\section{Mạng neural}
 
-\subsection{Mạng neural ( Neural Network )}
+\subsection{Mạng neural}
 	
 	
 	Theo khái niệm về sinh học, mạng neural là sự kết nối giữa các tế bào thần kinh neural lại với nhau. Trong lĩnh vực trí tuệ nhân tạo, mạng neural còn được gọi là Artificial Neural Network (ANN) - mạng neural nhân tạo, đây là mô hình xử lý dữ liệu, mô phỏng lại chức và cách hoạt động của hệ thống neural sinh học ở con người. Hình \ref{fig:neuron} minh họa cấu trúc của tế bào thần kinh neuron.
@@ -10,10 +10,9 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.18]{charts/neuron.png}
-		\caption{Tế bào thần kinh neuron sinh học \cite{img-neuron}}
+		\caption{Ảnh neuron sinh học.\cite{img-neuron}}
 		\label{fig:neuron}
 	\end{figure}
-	
 	Mạng neural có gồm nhiều đơn vị kết nối, làm việc như một thể thống nhất thông qua việc trao đổi thông tin nhờ các liên kết.
 	
 	\subsection{Cấu trúc mạng neural}
@@ -21,10 +20,9 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.4]{charts/NN.png}
-		\caption{Cấu trúc cơ bản mạng neuron\cite{img-perceptron}}
+		\caption{Cấu trúc cơ bản mạng neuron.\cite{img-perceptron}}
 		\label{fig:NN}
 	\end{figure}
-	
 	\textbf{Cấu trúc mạng neuron\i}
 	
 	\begin{itemize}
@@ -51,7 +49,6 @@
   			\end{tabular}
 		\right.
 		\]
-		\pagebreak
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.2]{charts/step_fun.png}
@@ -67,6 +64,7 @@
 				\caption{Đồ thị hàm sigmoid}
 				\label{fig:plot_sigmoid}
 			\end{figure}
+			\pagebreak
 			
 			\item \textbf{\textit{Tanh function:}}
 			\[Tanh(x) = \frac{2}{1 + e^{-2x}} - 1 \]
@@ -89,7 +87,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.3]{charts/ffnn.png}
-				\caption{Ví dụ kiến trúc mạng feeddorward \cite{ffnn-img}}
+				\caption{Ví dụ kiến trúc mạng feeddorward}
 				\label{fig:ffnn}			
 			\end{figure}\\
 			Như hình \ref{fig:ffnn}, một mạng Feedorward, trong tầng input và ouput thì số lượng neuron tại mỗi hai tầng nãy sẽ là cố định tùy theo đặc tính của dữ liệu. Đối với tầng ẩn, số lượng tầng ẩn cũng như số lượng neuron trong mỗi tầng tùy thuộc vào cá nhân thiết kế.
@@ -152,14 +150,11 @@
 			
 			Thuật toán sẽ tiếp tục lặp lại bước 2 cho đến khi thỏa điều kiện dừng và cho ra các tập trọng số và độ lệch tốt nhất.
 		\end{itemize}
-		
-		
-		
-		
+	
 			
 			
 
-\section{Mạng neural tích chập (Convolutional neural network)}
+\section{Mạng neural tích chập}
 
 \subsection{Giới thiệu mạng neural tích chập}
 	Trong vài năm trở lại đây, chúng ta thấy được sự nở rộ của các hệ thống thông minh từ các công ty công nghệ lớn trên thế giới. Các chức năng nhận dạng, phân loại hay dự đoán được áp dụng rộng rãi vào các lĩnh vực thương mại, vận tải..v..v.\par
@@ -177,14 +172,14 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.8]{charts/conv_layer1.png}
-			\caption{Convolutional layer \cite{conv-layer}}
+			\caption{Convolutional layer.\cite{conv-layer}}
 			\label{fig:conv_layer1}
 		\end{figure}
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[scale=0.8]{charts/conv_layer2.png}
-			\caption{Convolutional layer \cite{conv-layer}}
+			\caption{Convolutional layer.\cite{conv-layer}}
 			\label{fig:conv_layer2}
 		\end{figure}
 		
@@ -205,7 +200,6 @@
 			\caption{ảnh đầu vào \cite{img-input}}
 			\label{fig:mouse}
 		\end{figure}
-		\pagebreak
 		
 		\begin{figure}[h!]
 			\centering
@@ -259,8 +253,54 @@
 		Sau khi thông tin input đã qua các tầng tích chập và tổng hợp, các giá trị dữ liệu sẽ đi đến tầng fully connected để xuất ra kết quả. Kết quả tại tầng fully connected là một vector có kích thước bằng với số lớp(nhãn) mà bài toán cần dự đoán. Như bài toán phân loại ảnh giao thông ùn tắt và thông thoáng thì lúc này số nhãn cần dự đoán và kích thước vector tại tầng này sẽ bằng 2. Giá trị của các phần tử trong vector sẽ là giá trị xác suất của mỗi nhãn mà mạng dự đoán, [ 0.8, 0.2 ] sẽ biểu diễn 80\% ảnh này thuộc lớp 1 và 20\% ảnh thuộc lớp thứ 2. Về cơ bản, cách kết nối ở tầng này giống như cách kết nối neuron giữa các tầng với nhau ở mạng neuron ở mục trước. Khi đó, tất cả neuron ở tầng pooling sẽ kết nối với từng neuron trong tầng cuối.
 
 
-		
-	
+\section{Tổng quan về hệ thống Apache Hadoop}
+Apache Hadoop là một dự án phát triển phần mềm nhằm cung cấp một nền tảng phân tán, có thể mở rộng linh hoạt và có độ tin cậy cao.\par
+Ngoài ra Hadoop còn được xem là một thư viện hay framework cho phép xử lý phân tán khối lượng lớn dữ liệu trên nhiều cụm máy tính bằng các mô hình lập trình. Framework nay được thiết kế với mục đích có khả năng mở rộng từ một máy chủ đơn lẻ lên đến rất nhiều trạm làm việc mà mỗi máy trạm có khả năng tính toán và lưu trữ cục bộ.
+\section{Hadoop distributed file system - HDFS}
+\subsection{Thiết kế}
+HDFS là một hệ thống file nhằm lưu trữ một lượng rất rất lớn (Lớn ở đây theo nghĩa có thể là hàng trăm megabytes, gigabytes, hoặc terabytes) với cơ chế streamming data access trên những thiết bị phổ thông \footnote{các máy tính hoặc máy trạm}.
+ Đây là cơ chế phân luồng dữ liệu trong HDFS với mục đích ghi một lần chạy nhiều lần. Điển hình là dữ liệu sẽ được sinh và sao chép từ nguồn và sau đó có rất nhiều tiến trình phân tích khác nhau thực thi dữ liệu trên. Mỗi hoạt động phân tích sẽ thực thi liên quan đến một phần nào đó khác nhau trên cả một tập dư liệu trên.\par
+ Từ các thiết bị phổ thông ở đây là những những thiệt bị phân cứng máy tính, HDFS không yêu cầu một phần cứng đắt tiền hay độ tin cậy cao. Mà nó được thiết kế để chạy trên những cụm máy tính từ nhiều nhà cung ứng khác nhau. Vì thế mà xác suất để một node(đơn vị phần cứng) gặp lỗi và thất bại là rất lớn, đặc biệt là những cụm có hàng ngàn máy trạm. Với đặc tính đó, HDFS được thiết kế sao cho không có sự gián đoạn nào được phát hiện ở người dùng khi mà việc một số lượng node gặp lỗi giữa chừng.\par
+\subsection{Các khái niệm trong HDFS}
+\begin{itemize}
+	\item \textbf{Block(sector): }trong các đĩa cứng thông thường, đây là các phần nhỏ cuối cùng được chia ra để chứa dữ liệu, và đây cũng là đơn vị nhỏ nhất mà một lần đọc và ghi dữ liệu được hiện thực. Thông thường, block ở các đĩa cứng có dung lượng nhỏ chỉ tầm 512 byte. Ở HDFS, block thường có dung lượng lớn hơn rất nhiều - mặc định là 128MB. Do dung lượng của một block trên đĩa lớn như vậy nên các file tập tin trong HDFS nhiều khi có dung lượng và được lưu trữ nằm trong cả một block (trong HDFS). Nguyên nhân của việc block trong HDFS có dung lượng lớn như vậy là nhằm việc tối thiểu hóa chi phí tìm kiếm \cite{hadoop-def}
+	\item \textbf{Namenodes và Datanodes: }một HDFS gồm nhiều node, trong đó có hai loại chính đó là một master node (Namenode) - máy chủ và nhiều datanodes (những thiết bị nô lệ). Namenode là chương trình chỉ đạo các datanodes thực hiện các nhiệm vụ I/O ở mức thấp. Còn datanodes được sự điều phối của Namenode, lưu trữ và thường xuyên báo cáo với master các khối(block) mà nó hiện đang lưu trữ. Ngoài ra, các datanodes còn giao tiếp với nhau để sao lưu các khối dữ liệu dự phòng.
+	\item \textbf{jobTracker: }Trình nền JobTracker là một liên lạc giữa ứng dụng của bạn và Hadoop. Một khi bạn gửi mã nguồn của bạn tới các cụm (cluster), JobTracker sẽ quyết định kế hoạch thực hiện bằng cách xác định những tập tin nào sẽ xử lý, các nút được giao các nhiệm vụ khác nhau, và theo dõi tất cả các nhiệm vụ khi chúng đang chạy. Nếu một nhiệm vụ (task) thất bại (fail), JobTracker sẽ tự động chạy lại nhiệm vụ đó, có thể trên một node khác, cho đến một giới hạn nào đó được định sẵn của việc thử lại này.
+Chỉ có một JobTracker trên một cụm Hadoop. Nó thường chạy trên một máy chủ như là một nút master của cluster.
+\item \textbf{TaskTraker: }Như với các trình nền lưu trữ, các trình nền tính toán cũng phải tuân theo kiến trúc master/slave: JobTracker là giám sát tổng việc thực hiện chung của một công việc MapRecude và các taskTracker quản lý việc thực hiện các nhiệm vụ riêng trên mỗi node slave.
+Mỗi TaskTracker chịu trách nhiệm thực hiện các task riêng mà các JobTracker giao cho. Mặc dù có một TaskTracker duy nhất cho một node slave, mỗi TaskTracker có thể sinh ra nhiều JVM để xử lý các nhiệm vụ Map hoặc Reduce song song. Một trong những trách nhiệm của các TaskTracker là liên tục liên lạc với JobTracker. Nếu JobTracker không nhận được nhịp đập từ một TaskTracker trong vòng một lượng thời gian đã quy định, nó sẽ cho rằng TaskTracker đã bị treo (cashed) và sẽ gửi lại nhiệm vụ tương ứng cho các nút khác trong cluster.Cấu trúc liên kết này có một node Master là trình nền NameNode và JobTracker và một node đơn với SNN trong trường hợp node Master bị lỗi. Đối với các cụm nhở, thì SNN có thể thường chú trong một node slave. Mặt khác, đối với các cụm lớn, phân tách NameNode và JobTracker thành hai máy riêng. Các máy slave, mỗi máy chỉ lưu trữ một DataNode và Tasktracker, để chạy các nhiệm vụ trên cùng một node nơi lưu dữ liệu của chúng
+\end{itemize}
+\subsection{HIVE}
+Hive là hạ tầng kho dữ liệu cho Hadoop. Nhiệm vụ chính là cung cấp sự tổng hợp dữ liệu, truy vấn và phân tích. Nó hỗ trợ phân tích các tập dữ liệu lớn được lưu trong HDFS của Hadoop cũng như trên Amazon S3. Điểm hay của HIVE là hỗ trợ truy xuất giống SQL đến dữ liệu có cấu trúc, được biết với tên HiveSQL (hoặc HQL) cũng như phân tích big data với MapReduce. Hive không được xây dựng để hồi đáp nhanh các câu truy vấn nhưng nó được xây dựng cho các ứng dụng khai thác dữ liệu (data mining). Các ứng dụng khai thác dữ liệu có thể mất nhiều phút đến nhiều giờ để phân tích dữ liệu và HIVE được dùng chủ yếu.\par 
+\subsubsection{Cách tổ chức của HIVE}
+Dữ liệu được tổ chức thành 3 định dạng trong HIVE.\par
+
+\textbf{Tables:} Chúng rất tương tự như bảng (tables) trong RDBMS và chứa các dòng (rows). Hive chỉ được xếp lớp trên HDFS, do đó tables được ánh xạ trực tiếp vào các thư mục của hệ thống tập tin. Nó cũng hỗ trợ các tables được lưu trên các hệ thống tập tin khác.\par
+
+\textbf{Partitions:} Hive tables có thể có nhiều hơn 1 partition. Chúng được ánh xạ với các thư mục con và các hệ thống tập tin.\par
+
+\textbf{Buckets:} Trong Hive, dữ liệu có thể được chia thành các buckets. Buckets được lưu trữ như các tập tin trong partition trong hệ thống tập tin.\par
+Hive cũng có metastore để lưu tất cả metadata. Nó là cơ sở dữ liệu quan hệ chứa thông tin khác nhau liên quan đến Hive Schema (column types, owners, key-value data, statistics,…). Chúng ta có thể dùng MySQL cho việc này.
+\subsubsection{HIVESQL}
+Ngôn ngữ truy vấn Hive cung cấp các toán tử cơ bản giống SQL. Đây là một số tác vụ mà HQL có thể làm dễ dàng.
+\begin{itemize}
+	\item Tạo và quản lý tables và partitions.
+	\item Hỗ trợ các toán tử Relational, Arithmetic và Logical khác nhau.
+	\item Evaluate functions
+	\item Tải về nội dung 1 table từ thư mục cục bộ hoặc kết quả của câu truy vấn đến thư mục HDFS.
+	\item Đây là ví dụ truy vấn HQL:
+	\begin{lstlisting}[language=SQL]
+SELECT upper(name), salesprice 
+FROM sales; 
+SELECT category, count(1) 
+FROM products 
+GROUP BY category;
+
+	\end{lstlisting}
+\end{itemize}
+\section{ Tại sao sử dụng Apache Hadoop trong đề tài}
+Hiện nay trên các xe buýt đều được trang bị camera hành trình, các video này ghi lại hình ảnh trên các con đường. Các hình ảnh này được gửi về hệ thống một cách liên tục hàng ngày và hàng giờ. Do kích thước dữ liệu tăng lên đáng kể cần một hệ thống lưu trữ có khả năng mở rộng linh động, vì thế hệ thống HDFS do Apache Hadoop hỗ trợ là công cụ hợp lý. Ngoài ra hệ thống HDFS còn có thể kết hợp với các thư viện hỗ trợ học sâu như Tensorflow nên ta có thể áp dụng các mô hình trong lĩnh vực machine learning nói chung và deep learning nói riêng để xây dựng một hệ thống phân loại ảnh. Khi kết hợp các thành phần trên, ta có thể tinh chỉnh tập dữ liệu sao cho phù hợp với bài toán của thể của từng trường hợp cũng như các lĩnh vực khác mà không nhất thiết là lĩnh vực giao thông.
+
 	
 	
 	
