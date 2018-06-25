@@ -36,7 +36,7 @@
 		\item \textbf{Các liên kết:} mỗi node trong một tầng truyền thông tin qua các node ở các tầng khác thông qua các liên kết. Các giá trị mà các liên kết này được gán sẽ được gọi là trọng số liên kết (weight). Giá trị trọng số được kết nối vào neuron j với neoron k là \(w_{kj}\).
 		\item \textbf{Hàm truyền - transfer function: }dùng để tính tổng các tích input với trọng số liên kết của nó. \[ \sum input_j*w_{ij}\]
 		
-		\item \textbf{Activation function: }dùng để tính toán giá trị input sang giá trị ouput. Tùy vào mục địch và cụ thể từng loại mạng mà có nhiều loại activation function khác nhau.\\
+		\item \textbf{Activation function: }dùng để tính toán giá trị input sang giá trị ouput. Tùy vào mục đích và cụ thể từng loại mạng mà có nhiều loại activation function khác nhau.\\
 		Trong các bài toán khác nhau, người có những loại hàm activation như sau.
 		
 		\begin{itemize}
@@ -171,14 +171,14 @@
 		%\pagebreak
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[scale=0.8]{charts/conv_layer1.png}
+			\includegraphics[scale=0.9]{charts/conv_layer1.png}
 			\caption{Convolutional layer.\cite{conv-layer}}
 			\label{fig:conv_layer1}
 		\end{figure}
 		
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[scale=0.8]{charts/conv_layer2.png}
+			\includegraphics[scale=0.9]{charts/conv_layer2.png}
 			\caption{Convolutional layer.\cite{conv-layer}}
 			\label{fig:conv_layer2}
 		\end{figure}
@@ -259,8 +259,8 @@ Ngoài ra Hadoop còn được xem là một thư viện hay framework cho phép
 \section{Hadoop distributed file system - HDFS}
 \subsection{Thiết kế}
 HDFS là một hệ thống file nhằm lưu trữ một lượng rất rất lớn (Lớn ở đây theo nghĩa có thể là hàng trăm megabytes, gigabytes, hoặc terabytes) với cơ chế streamming data access trên những thiết bị phổ thông \footnote{các máy tính hoặc máy trạm}.
- Đây là cơ chế phân luồng dữ liệu trong HDFS với mục đích ghi một lần chạy nhiều lần. Điển hình là dữ liệu sẽ được sinh và sao chép từ nguồn và sau đó có rất nhiều tiến trình phân tích khác nhau thực thi dữ liệu trên. Mỗi hoạt động phân tích sẽ thực thi liên quan đến một phần nào đó khác nhau trên cả một tập dư liệu trên.\par
- Từ các thiết bị phổ thông ở đây là những những thiệt bị phân cứng máy tính, HDFS không yêu cầu một phần cứng đắt tiền hay độ tin cậy cao. Mà nó được thiết kế để chạy trên những cụm máy tính từ nhiều nhà cung ứng khác nhau. Vì thế mà xác suất để một node(đơn vị phần cứng) gặp lỗi và thất bại là rất lớn, đặc biệt là những cụm có hàng ngàn máy trạm. Với đặc tính đó, HDFS được thiết kế sao cho không có sự gián đoạn nào được phát hiện ở người dùng khi mà việc một số lượng node gặp lỗi giữa chừng.\par
+ Đây là cơ chế phân luồng dữ liệu trong HDFS với mục đích ghi một lần chạy nhiều lần. Điển hình là dữ liệu sẽ được sinh và sao chép từ nguồn và sau đó có rất nhiều tiến trình phân tích khác nhau thực thi dữ liệu trên. Mỗi hoạt động phân tích sẽ thực thi liên quan đến một phần nào đó khác nhau trên cả một tập dữ liệu trên.\par
+ Từ các thiết bị phổ thông ở đây là những những thiết bị phần cứng máy tính, HDFS không yêu cầu một phần cứng đắt tiền hay độ tin cậy cao. Mà nó được thiết kế để chạy trên những cụm máy tính từ nhiều nhà cung ứng khác nhau. Vì thế mà xác suất để một node(đơn vị phần cứng) gặp lỗi và thất bại là rất lớn, đặc biệt là những cụm có hàng ngàn máy trạm. Với đặc tính đó, HDFS được thiết kế sao cho không có sự gián đoạn nào được phát hiện ở người dùng khi mà việc một số lượng node gặp lỗi giữa chừng.\par
 \subsection{Các khái niệm trong HDFS}
 \begin{itemize}
 	\item \textbf{Block(sector): }trong các đĩa cứng thông thường, đây là các phần nhỏ cuối cùng được chia ra để chứa dữ liệu, và đây cũng là đơn vị nhỏ nhất mà một lần đọc và ghi dữ liệu được hiện thực. Thông thường, block ở các đĩa cứng có dung lượng nhỏ chỉ tầm 512 byte. Ở HDFS, block thường có dung lượng lớn hơn rất nhiều - mặc định là 128MB. Do dung lượng của một block trên đĩa lớn như vậy nên các file tập tin trong HDFS nhiều khi có dung lượng và được lưu trữ nằm trong cả một block (trong HDFS). Nguyên nhân của việc block trong HDFS có dung lượng lớn như vậy là nhằm việc tối thiểu hóa chi phí tìm kiếm \cite{hadoop-def}
