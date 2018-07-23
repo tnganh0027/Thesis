@@ -25,11 +25,21 @@
 \setcounter{secnumdepth}{3}
 \definecolor{light-gray}{gray}{0.95}
 \renewcommand{\baselinestretch}{1.5}
+\usepackage{geometry}
+\usepackage{scrextend}
+\usepackage{anyfontsize}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
+}
+\geometry{ 
+	a4paper,
+	left=30mm,
+	right=20mm,
+	top=20mm,
+	bottom=20mm
 }
 
 
@@ -53,15 +63,15 @@
     \draw [line width=0.5mm,decorate,decoration={
         %,segment length=<length>,amplitude=<length>
         }]
-        ($ (current page.north west) + (3cm,-3cm) $)
-        rectangle
-        ($ (current page.south east) + (-3cm,3cm) $);
+        ($ (current page.north west) + (3cm,-2cm) $)
+         rectangle
+        ($ (current page.south east) + (-2cm,2cm) $);
 \end{tikzpicture}
 
 \begin{center}
-	\textbf{ĐẠI HỌC QUỐC GIA TP.HỒ CHÍ MINH}\\
-	TRƯỜNG ĐẠI HỌC BÁCH KHOA\\
-	KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH\\
+	\textbf{{\fontsize{15}{15}\selectfont ĐẠI HỌC QUỐC GIA TP.HCM}}\\
+	\textbf{{\fontsize{15}{15}\selectfont TRƯỜNG ĐẠI HỌC BÁCH KHOA}}\\
+	\textbf{{\fontsize{15}{15}\selectfont KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH}}\\
 	---------------o0o--------------- \\
 	\vspace{5mm}
 	\includegraphics[scale=0.2]{charts/logo.png}
@@ -69,22 +79,29 @@
 \vspace{5mm}
 
 \begin{center}
-	\textbf{Luận văn tốt nghiệp}
+	\textbf{{\fontsize{15}{15}\selectfont LUẬN VĂN TỐT NGHIỆP ĐẠI HỌC}}
+\end{center}
+\begin{center}
+\textbf{{\fontsize{22}{15}\selectfont PHÁT HIỆN KẸT XE QUA ẢNH CAMERA HÀNH TRÌNH}}
 \end{center}
 
-\textbf{\Large Phát hiện kẹt xe từ camera hành trình}
+\vspace{15mm}
 
-\vspace{5mm}
+\begin{addmargin}[100pt]{0pt}
+\textbf{{\fontsize{15}{15}\selectfont HỘI ĐỒNG: HỆ THỐNG THÔNG TIN 1}}\\
+\textbf{{\fontsize{15}{15}\selectfont GHHD: TS DƯƠNG NGỌC HIẾU}}\\
+\textbf{{\fontsize{15}{15}\selectfont GHHD: TS TRẦN MINH QUANG}}
+\begin{center}
+\textbf{{\fontsize{15}{15}\selectfont ---o0o---}}
+\end{center}
+\textbf{{\fontsize{15}{15}\selectfont SVTH 1: TRƯƠNG NGỌC ANH (1410141)}}\\
+\textbf{{\fontsize{15}{15}\selectfont SVTH 2: LÊ NGUYỄN MINH TRÍ (1414207)}}\\
 
-\textbf{GVHD: } TS.Dương Ngọc Hiếu
-
-\vspace{5mm}
-
-\textbf{Nhóm sinh viên thực hiện:}\par
-\begin{tabular}{ c c }
- Trương Ngọc Anh & 1410141 \\ 
- Lê Nguyễn Minh Trí & 1414207     
-\end{tabular}
+\end{addmargin}
+\null\vfill
+\begin{center}
+        TP. HỒ CHÍ MINH, THÁNG 6/2018
+\end{center}
 
 \thispagestyle{empty}
 \end{titlepage}
@@ -97,6 +114,7 @@
 %
 \listoffigures
 \listoftables
+\chapter*{Lời cam đoan}
 \chapter*{Lời cảm ơn}
 Trước khi vào phần giới thiệu nội dung đề tài luận văn, nhóm sinh viên tụi em xin gửi lời cảm ơn chân thành và sự tri ân sâu sắc đối với thầy \textbf{Dương Ngọc Hiếu} đã giúp đỡ, hướng dẫn tận tình cho tụi em về những khái niệm căn bản và phương hướng tiếp cận thông qua việc phân tích ảnh được dùng trên công nghệ Deep Learning, giúp tụi em chỉnh sửa những thiếu sót trong quá trình nghiên cứu và thực hiện đề tài này. Ngoài ra, tụi em cũng xin chân thành cảm ơn anh \textbf{Nguyễn Thanh Trông} đã hướng dẫn, giúp đỡ tụi em về việc ứng dụng \& kết hợp Deep Learning với Big Data, bổ sung những thiếu sót, sai sót của tụi em trong quá trình thực hiện đề tài. Đồng thời, do những kinh nghiệm thực tiễn và phương hướng tiếp cận về công nghệ Deep Learning \& Big Data còn nhiều hạn chế nên bài luận văn không thể tránh khỏi những thiếu sót, tụi em rất mong sẽ nhận được ý kiến đóng góp từ phía Thầy, Cô để tụi em học hỏi thêm được nhiều kinh nghiệm và sẽ hoàn thành tốt đề tài luận văn này hơn nữa.
 \begin{flushright}
