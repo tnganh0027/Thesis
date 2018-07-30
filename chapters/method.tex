@@ -8,7 +8,7 @@
 	\end{figure}
 
 \section{Tổng quan các bước}
-	Hệ thống phân loại ảnh kết hợp Apache Hadoop và mô hình học sâu Deeplearning sẽ được thực hiện dựa trên sơ đồ trên. Hiện nay, các xe buýt đều được trang bị camera hanh trình và hệ thống GPS. Các video được ghi lại sẽ được lưu tại một nơi. Do số lượng của các video được gửi về liên tục và hàng ngày và giờ, nên việc sử dụng hệ thống lưu trữ HDFS của Apache Hadoop là lựa chọn hợp lý. Tiếp đến là việc truy xuất ảnh từ video và gán nhãn ảnh phục vụ cho việc huấn luyện mô hình học sâu. Đây cũng là công đoạn tốn kém chi phí nhất. Sau cùng là việc huấn luyện tập dữ liệu đã xây dựng.
+	Hệ thống phân loại ảnh kết hợp Apache Hadoop và mô hình học sâu Deeplearning sẽ được thực hiện dựa trên sơ đồ trên. Hiện nay, các xe buýt đều được trang bị camera hành trình và hệ thống GPS. Các video được ghi lại sẽ được lưu tại một nơi. Do số lượng của các video được gửi về liên tục và hàng ngày và giờ, nên việc sử dụng hệ thống lưu trữ HDFS của Apache Hadoop là lựa chọn hợp lý. Tiếp đến là việc truy xuất ảnh từ video và gán nhãn ảnh phục vụ cho việc huấn luyện mô hình học sâu. Đây cũng là công đoạn tốn kém chi phí nhất. Sau cùng là việc huấn luyện tập dữ liệu đã xây dựng.
 
 \section{Các bước chuẩn bị}
 \subsection{Chuẩn bị môi trường hiện thực}
@@ -130,7 +130,7 @@
 			\begin{itemize}
 				\item \textbf{Tải gói cài đặt: }Tải gói cài đặt Hadoop theo link phía dưới\\
 				http://hadoop.apache.org/releases.html
-				\item \textbf{Giải nén gói cài đặt: }Giải nén đến thu mục \textit{/usr/local} bằng câu lệnh
+				\item \textbf{Giải nén gói cài đặt: }Giải nén đến thư mục \textit{/usr/local} bằng câu lệnh
 				\begin{lstlisting}
 tar xzf hadoop-3.1.0.tar.gz -C /usr/local/
 				\end{lstlisting}
@@ -145,7 +145,7 @@ export HADOOP_COMMON_HOME=${HADOOP_PREFIX}
 export HADOOP_HDFS_HOME=${HADOOP_PREFIX}
 export YARN_HOME=${HADOOP_PREFIX}
 				\end{lstlisting}
-				Sau khi lưu nội dung chỉnh sửa, thưc thị \textit{source ~/.bashrc} để các biến hệ thống thiết lập các biến môi trường.
+				Sau khi lưu nội dung chỉnh sửa, thực thi \textit{source ~/.bashrc} để các biến hệ thống thiết lập các biến môi trường.
 				\item \textbf{Cấu hình file hadoop-env.sh: }cấu hình biến \textit{JAVA\_HOME}
 				\begin{lstlisting}[language=bash]
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
@@ -273,7 +273,7 @@ scp /usr/local/hadoop-3.1.0 slave1:/usr/local/hadoop-3.1.0
 	\begin{lstlisting}
 hdfs dfs -put ~/Document/traffic/ hdfs://master:9000/
 	\end{lstlisting}
-	Với \textit{~/Document/traffic} là đương dẫn đến thư mục lưu dữ liệu ảnh, và \textit{hdfs://master:9000/} là đường dẫn đến vị trí lưu của HDFS. Để xem kết quả put ta thực hiện lệnh sau để liệt kê các thư mục dữ liệu đã được lưu trên HDFS.
+	Với \textit{~/Document/traffic} là đường dẫn đến thư mục lưu dữ liệu ảnh, và \textit{hdfs://master:9000/} là đường dẫn đến vị trí lưu của HDFS. Để xem kết quả put ta thực hiện lệnh sau để liệt kê các thư mục dữ liệu đã được lưu trên HDFS.
 	\begin{figure}[h!]
 				\centering
 				\includegraphics[scale=0.6]{charts/dfs-ls.png}
@@ -299,19 +299,19 @@ export CLASSPATH=$CLASSPATH:/usr/local/hive/lib/*:.
 	\end{enumerate}
 	
 	\subsubsection{Tải và cài đặt Apache Derby}
-	Làm theo các lệnh hướng dẫn để tải à cài đặt Apache Derby
+	Làm theo các lệnh hướng dẫn để tải và cài đặt Apache Derby
 	\begin{enumerate}
 		\item \textbf{Tải Apache Derby: } vào và tải ở địa chỉ sau \textit{http://archive.apache.org/dist/db/derby/} với phiên bản 10.14.2.0
 		\item \textbf{Giải nén: } giải nén vào thư mục \textit{/usr/local/derby}
-		\item \textbf{Cấu hình biến môi trương cho Derby:} Thêm nội dung file \textit{~/.bashrc} như sau.
+		\item \textbf{Cấu hình biến môi trường cho Derby:} Thêm nội dung file \textit{~/.bashrc} như sau.
 		\begin{lstlisting}[language=bash]
 export DERBY_HOME=/usr/local/derby
 export PATH=$PATH:$DERBY_HOME/bin
 		\end{lstlisting}
 	\end{enumerate}
 		
-	\subsubsection{dữ liệu GPS }
-	Dữ liệu GPS là tập dữ liệu lưu vị trí GPS của một xe buýt trong một thời điểm nhất định. Dữ liệu này được lưu bằng bảng trong HIVE. Cấu trúc của bảng dữ liệu bao kinh độ, vĩ độ, thơi điểm theo định dạng DD/MM/YYYY hh:mm:ss.
+	\subsubsection{Dữ liệu GPS }
+	Dữ liệu GPS là tập dữ liệu lưu vị trí GPS của một xe buýt trong một thời điểm nhất định. Dữ liệu này được lưu bằng bảng trong HIVE. Cấu trúc của bảng dữ liệu bao gồm kinh độ, vĩ độ, thời điểm theo định dạng DD/MM/YYYY hh:mm:ss.
 	
 	
 
@@ -326,7 +326,7 @@ export PATH=$PATH:$DERBY_HOME/bin
 	
 		Các hình ảnh được trình bày và lưu trữ vào các thư mục có chứa các tên mô tả cho đặt tính của những hình ảnh đó. Với bộ dữ liệu trên, chương trình tạo một kiểu dữ liệu dictionary với khóa chính là giá trị biểu diễn cho tên thư mục và cũng là tên class cần phân loại, value chính là đường dẫn các file ảnh tương ứng.\par
 		 Để sử dụng được trong mô hình mạng, các hình ảnh sẽ được mã hóa sang một định dạng mới nhờ các phương thức hỗ trợ có sẵn trong thư viện Tensorflow. Sau khi được mã hóa, kết quả chính là các tensor có thông số shape như sau [299, 299, 3], với hai vị trí đầu tiên chính là kích thước của hình ảnh cũng như của tensor, giá trị 3 biểu diễn cho độ sâu (ảnh màu).\par
-	 	Sau cùng, bộ dữ liệu đã được mã hóa được chia thành 3 tập con sử dụng với 3 mục đích khác nhau: tập huấn luyện(Training set), tập validation để tránh vấn đề overrfit trong quá trình huấn luyện và tập kiểm thử dùng để kiểm tra độ chính xác của mô hình sau khi huấn luyện hoàn tất.	Riêng tập huấn luyện sẽ được dùng để tạo ra các bottlenecks
+	 	Sau cùng, bộ dữ liệu đã được mã hóa được chia thành 3 tập con sử dụng với 3 mục đích khác nhau: tập huấn luyện(Training set), tập validation để tránh vấn đề overrfit trong quá trình huấn luyện và tập kiểm thử dùng để kiểm tra độ chính xác của mô hình sau khi huấn luyện hoàn tất.	Riêng tập huấn luyện sẽ được dùng để tạo ra các bottlenecks.
 	
 	\subsection{Tạo các bottlenecks}
 	
@@ -336,9 +336,9 @@ export PATH=$PATH:$DERBY_HOME/bin
 		
 	Sau khi hoàn tất tạo các giá trị bottleneck, việc thực hiện thực hiện cấu hình mạng và huấn luyện bắt đầu. Tổng số bước huấn luyện sẽ được cài đặt mặc định là 4000 bước, tuy nhiên có thể thay đổi lại tùy theo tình huống. Mỗi bước huấn luyện sẽ chọn ra 100 dữ liệu ngẫu nhiên \footnote{Tập dữ liệu lúc này là những bottlenecks} để đưa vào tầng cuối cùng \footnote{Tầng fully-connected với softmax là activation function} để dự đoán lớp, lớp dự đoán sẽ được so sánh với các lớp thực tế để mạng điều chỉnh và cập nhật các giá trị trọng số thông qua cơ chế lan truyền ngược như đã trình bày ở chương trước. Do phép toán được thực hiện trên tập huấn luyện nên sẽ  gây ra vấn đề overfit, vì thế mà tập validation sẽ được sử dụng để đo lại giá trị sai lệch và độ chính xác. Nếu độ chính xác tại tập huấn luyện cao nhưng tại tập validation không thay đổi hoặc thấp thì chứng tỏ mô hình mạng gặp phải vấn đề overfit và việc huấn luyện tiếp tục không còn có ích.
 	
-	\subsection{Chạy Huấn luyện bằng cách kết hợp tensorflow với hệ thống HDFS}
+	\subsection{Chạy huấn luyện bằng cách kết hợp tensorflow với hệ thống HDFS}
 	\subsubsection{Chuẩn bị}
-	Ở các nội dung trên, chúng ta đã thực hiện việc cài đặt Apache Hadoop cũng như các biến môi trường cần thiết, trong đó có hai biến môi trường cần thiết để chạy thực thi mô hình trên là \textbf{JAVA\_HOME} và vị trí cài đặt Hadoop\textbf{HADOOP\_HDFS\_HOME}. Bây giờ chúng ta sẽ cần thêm một biến môi trường cho hệ thống nữa.
+	Ở các nội dung trên, chúng ta đã thực hiện việc cài đặt Apache Hadoop cũng như các biến môi trường cần thiết, trong đó có hai biến môi trường cần thiết để chạy thực thi mô hình trên là \textbf{JAVA\_HOME} và vị trí cài đặt Hadoop \textbf{HADOOP\_HDFS\_HOME}. Bây giờ chúng ta sẽ cần thêm một biến môi trường cho hệ thống nữa.
 	\begin{itemize}
 		\item \textbf{LD\_LIBRARY\_PATH: }để thêm biến này, chúng ta cần thêm vào file \textit{~/.bashrc} nội dung như sau.	
 	\begin{figure}[h!]
